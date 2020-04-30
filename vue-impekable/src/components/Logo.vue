@@ -1,0 +1,51 @@
+<template>
+    <div class="logo-container">
+        <h1 class="logo">Impekable</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Logo'
+}
+</script>
+
+<style>
+.logo-container {
+  height: 70px;
+  background-color: #3C3B54;
+  margin-bottom: .2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.logo-container h1 {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 21px;
+  letter-spacing: .2rem;
+  padding-left: 5%;
+  text-transform: uppercase;
+}
+
+.logo-container h1:hover {
+  cursor: pointer;
+}
+
+.main-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+</style>
