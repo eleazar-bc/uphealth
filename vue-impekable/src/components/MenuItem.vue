@@ -1,12 +1,9 @@
 <template>
-    <li v-bind:class="{'active' : menu.isActive}">
-        <img v-bind:src="menu.src" alt="">
-        <a href="#">{{menu.title}}</a>
-    </li>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+  <router-link v-bind:to="menu.url" tag="li">
+    <img v-bind:src="menu.src" alt="">
+    <span>{{menu.title}}</span>
+    <!-- <p>{{menu.title}}</p> -->
+  </router-link>
 </template>
 
 <script>
@@ -16,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 li {
   height: 53px;
   display: -webkit-box;
@@ -43,8 +40,15 @@ li:hover {
   border-left: 5px solid #A3A0FB;
 }
 
-li.active {
+li.router-link-active {
   background-color: #3C3B54;
   border-left: 5px solid #A3A0FB;
+}
+
+@media (max-width: 768px) {
+
+  li span {
+    display: none;
+  }
 }
 </style>

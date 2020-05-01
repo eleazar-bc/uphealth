@@ -1,10 +1,4 @@
 <template>
-  <div class="home">
-    <header class="container">
-        <Search />
-        <Notifications />
-        <User />
-    </header>
     <div class="home-wrapper">
         <div class="home-title">Products</div>
         <Cards />
@@ -13,14 +7,9 @@
           <SideContent />
         </div>
     </div>
-  </div>
 </template>
 
 <script>
-import Search from '../components/Search.vue';
-import Notifications from '../components/Notifications.vue';
-import User from '../components/User.vue';
-
 import Cards from '../components/Cards.vue';
 import MainContent from '../components/MainContent.vue';
 import SideContent from '../components/SideContent.vue';
@@ -28,9 +17,6 @@ import SideContent from '../components/SideContent.vue';
 export default {
   name: 'Home',
   components: {
-    Search,
-    Notifications,
-    User,
     Cards,
     MainContent,
     SideContent
@@ -39,21 +25,6 @@ export default {
 </script>
 
 <style scoped>
-.home header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 80vw;
-  height: 70px;
-  padding: 1em;
-}
-
 .home .home-wrapper {
   margin: 1em 5vw;
 }
@@ -77,9 +48,6 @@ export default {
 @media (max-width: 1024px) {
   .home .home-wrapper {
     margin: 1em;
-  }
-  .home header .user .username {
-    display: none;
   }
 }
 

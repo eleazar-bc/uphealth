@@ -28,12 +28,6 @@ export default {
         color: 'green',
         description: 'Growth'
       }
-      , {
-        src: 'images/Icon.png',
-        value: '+2.0%',
-        color: 'green',
-        description: 'Growth'
-      }
       ]
     }
   }

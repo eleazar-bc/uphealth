@@ -16,63 +16,53 @@ export default {
     return {
       menus: [
         {
-          isActive: true,
           title: 'Home',
-          url: '#',
+          url: '/home',
           src: 'images/icon_home.png'
         },
         {
-          isActive: false,
           title: 'Dashboard',
-          url: '#',
+          url: '/dashboard',
           src:'images/icon_dashboard.png'
         },
         {
-          isActive: false,
           title: 'Inbox',
-          url: '#',
+          url: '/inbox',
           src:'images/icon_inbox.png'
         },
         {
-          isActive: false,
           title: 'Products',
-          url: '#',
+          url: '/products',
           src:'images/icon_products.png'
         },
         {
-          isActive: false,
           title: 'Invoices',
-          url: '#',
+          url: '/invoice',
           src:'images/icon_Invoices.png'
         },
         {
-          isActive: false,
           title: 'Costumers',
-          url: '#',
+          url: '/costumers',
           src:'images/icon_customers.png'
         },
         {
-          isActive: false,
           title: 'Chatroom',
-          url: '#',
+          url: '/chat',
           src:'images/icon_chat-room.png'
         },
         {
-          isActive: false,
           title: 'Calendar',
-          url: '#',
+          url: '/calendar',
           src:'images/icon_calendar.png'
         },
         {
-          isActive: false,
           title: 'Help Center',
-          url: '#',
+          url: '/help',
           src:'images/icon_help-center.png'
         },
         {
-          isActive: false,
           title: 'Settings',
-          url: '#',
+          url: '/settings',
           src:'images/icon_setting.png'
         }
       ]

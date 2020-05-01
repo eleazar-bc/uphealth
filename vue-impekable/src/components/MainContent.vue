@@ -7,7 +7,7 @@
             <div class="header-total">Total</div>
         </div>
         <div class="products">
-            <Product v-for="product in products" v-bind:key="product.name" v-bind:product="product" />
+            <Product v-for="product in products" v-bind:key="product.id" v-bind:product="product" />
         </div>
         <div class="show-more">
             Show More
@@ -23,26 +23,30 @@ export default {
     data() {
         return {
             products: [{
+                id: 1,
                 name: 'Women\'s Vintage Peacoat',
-                img: 'images/product1.png',
+                src: 'images/product1.png',
                 availability: '320 In Stock',
                 color: 'green',
                 price: '$29,192'
             }, {
+                id: 4,
                 name: 'Women\'s Oatmeal Sweater',
-                img: 'images/product2.png',
+                src: 'images/product2.png',
                 availability: 'Out of Stock',
                 color: 'red',
                 price: '$29,192'
             }, {
+                id: 2,
                 name: 'Women\'s Denim Shirt',
-                img: 'images/product3.png',
+                src: 'images/product3.png',
                 availability: '3 In Stock',
                 color: 'orange',
                 price: '$29,192'
             }, {
+                id: 3,
                 name: 'Women\'s Vintage Peacoat',
-                img: 'images/product4.png',
+                src: 'images/product4.png',
                 availability: '3 In Stock',
                 color: 'orange',
                 price: '$29,192'
@@ -53,18 +57,18 @@ export default {
 </script>
 
 <style>
-.home .home-wrapper .home-content .top-products {
+.top-products {
   width: 66%;
   padding: 1em;
 }
 
-.home .home-wrapper .home-content .top-products .products-title {
+.top-products .products-title {
   font-size: 1.125rem;
   line-height: 13px;
   margin: 1em 0;
 }
 
-.home .home-wrapper .home-content .top-products .products-header {
+.top-products .products-header {
   font-weight: 700;
   font-size: 0.6875rem;
   line-height: 15px;
@@ -83,11 +87,11 @@ export default {
   padding: 0 1em;
 }
 
-.home .home-wrapper .home-content .top-products .products-header .header-name {
+.top-products .products-header .header-name {
   width: 50%;
 }
 
-.home .home-wrapper .home-content .top-products .products {
+.top-products .products {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,7 +102,7 @@ export default {
   padding: 0 1em;
 }
 
-.home .home-wrapper .home-content .top-products .show-more {
+.top-products .show-more {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,12 +118,12 @@ export default {
   color: #3B86FF;
 }
 
-.home .home-wrapper .home-content .top-products .show-more:hover {
+.top-products .show-more:hover {
   cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .home .home-wrapper .home-content .top-products {
+  .top-products {
     width: 100%;
     margin-bottom: 1em;
   }

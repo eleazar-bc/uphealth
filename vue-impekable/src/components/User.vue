@@ -11,8 +11,8 @@ export default {
 }
 </script>
 
-<style>
-.home header .user {
+<style scoped>
+.user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,7 +24,7 @@ export default {
   width: 10vw;
 }
 
-.home header .user .username {
+.user .username {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,20 +35,20 @@ export default {
   line-height: .20em;
 }
 
-.home header .user .username:hover {
+.user .username:hover {
   cursor: pointer;
 }
 
-.home header .user .username img {
+.user .username img {
   margin-left: .5em;
 }
 
-.home header .user .avatar:hover {
+.user .avatar:hover {
   cursor: pointer;
 }
 
 @media (max-width: 1024px) {
-  .home header .user .username {
+  .user .username {
     display: none;
   }
 }

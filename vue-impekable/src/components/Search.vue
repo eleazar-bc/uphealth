@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style>
-.home header .search {
+.search {
   width: 60vw;
   height: 100%;
   display: -webkit-box;
@@ -23,7 +23,7 @@ export default {
           align-items: center;
 }
 
-.home header .search input {
+.search input {
   height: 90%;
   width: 90%;
   border: none;

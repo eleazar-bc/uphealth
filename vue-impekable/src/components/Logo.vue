@@ -1,6 +1,8 @@
 <template>
     <div class="logo-container">
-        <h1 class="logo">Impekable</h1>
+        <router-link to="/" tag="h1" class="logo">
+          Impekable
+        </router-link>
     </div>
 </template>
 
@@ -10,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .logo-container {
   height: 70px;
   background-color: #3C3B54;
@@ -47,5 +49,11 @@ export default {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    display: none;
+  }
 }
 </style>

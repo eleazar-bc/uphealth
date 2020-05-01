@@ -47,19 +47,19 @@ export default {
 }
 </script>
 
-<style>
-.home .home-wrapper .home-content .quick-details {
+<style scoped>
+.quick-details {
   width: 32%;
   padding: 1em;
 }
 
-.home .home-wrapper .home-content .quick-details .details-title {
+.quick-details .details-title {
   font-size: 1.125rem;
   line-height: 13px;
   margin: 1em 0;
 }
 
-.home .home-wrapper .home-content .quick-details .details .detail {
+.quick-details .details .detail {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,7 +72,7 @@ export default {
   height: 80px;
 }
 
-.home .home-wrapper .home-content .quick-details .details .detail .detail-description {
+.quick-details .details .detail .detail-description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,17 +83,17 @@ export default {
   line-height: 20px;
 }
 
-.home .home-wrapper .home-content .quick-details .details .detail .detail-description img {
+.quick-details .details .detail .detail-description img {
   margin-right: 1em;
 }
 
-.home .home-wrapper .home-content .quick-details .details .detail .detail-value {
+.quick-details .details .detail .detail-value {
   font-size: 0.9375rem;
   line-height: 25px;
 }
 
 @media (max-width: 768px) {
-  .home .home-wrapper .home-content .quick-details {
+  .quick-details {
     width: 100%;
   }
 }

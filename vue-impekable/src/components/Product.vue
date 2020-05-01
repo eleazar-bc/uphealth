@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-.home .home-wrapper .home-content .top-products .products .product {
+.product {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,7 +29,7 @@ export default {
   border-bottom: 1px solid #F1F1F3;
 }
 
-.home .home-wrapper .home-content .top-products .products .product .product-name {
+.product .product-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,11 +39,11 @@ export default {
   width: 50%;
 }
 
-.home .home-wrapper .home-content .top-products .products .product .product-name img {
+.product .product-name img {
   margin-right: 1em;
 }
 
-.home .home-wrapper .home-content .top-products .products .product .product-availability {
+.product .product-availability {
   border-radius: 14px;
   width: 90px;
   height: 24px;

@@ -4,7 +4,15 @@
       <Logo />
       <Navigation />
     </div>
+
+    <div class="home">
+    <header class="container">
+        <Search />
+        <Notifications />
+        <User />
+    </header>
     <router-view/>
+  </div>
   </div>
 </template>
 
@@ -12,11 +20,18 @@
 import Logo from './components/Logo.vue';
 import Navigation from './components/Navigation.vue';
 
+import Search from './components/Search.vue';
+import Notifications from './components/Notifications.vue';
+import User from './components/User.vue';
+
 export default {
   name: 'App',
   components: {
     Logo,
-    Navigation
+    Navigation,
+    Search,
+    Notifications,
+    User
   }
 }
 </script>
@@ -87,11 +102,30 @@ html body span.text-opacity {
   opacity: .5;
 }
 
+.home header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 70px;
+  padding: 1em;
+}
+
 .sidebar {
   color: #FFFFFF;
   background-color: #43425D;
+  height: 100vh;
   width: 20vw;
   min-width: 160px;
+}
+
+.home {
+  width: 80vw;
 }
 
 @media (max-width: 768px) {
@@ -99,11 +133,11 @@ html body span.text-opacity {
     width: 10vw;
     min-width: 10vw;
   }
-  .sidebar .logo-container h1 {
-    display: none;
+  .home {
+    width: 90vw;
   }
-  .sidebar .main-nav ul li a {
-    display: none;
+  .home header {
+    width: 90vw;
   }
 }
 </style>
