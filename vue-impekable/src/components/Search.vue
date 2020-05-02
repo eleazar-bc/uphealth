@@ -1,7 +1,7 @@
 <template>
 <div class="search">
     <img src="images/icon_search.png" alt="">
-    <input type="text" placeholder="Search transactions, invoices or help">
+    <input type="text" placeholder="Search...">
 </div>
 </template>
 

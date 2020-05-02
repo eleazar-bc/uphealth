@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import MenuItem from './MenuItem.vue';
+import MenuItem from '../MenuItem.vue';
 
 export default {
     name: 'Navigation',
@@ -26,39 +26,14 @@ export default {
           src:'images/icon_dashboard.png'
         },
         {
-          title: 'Inbox',
-          url: '/inbox',
-          src:'images/icon_inbox.png'
-        },
-        {
           title: 'Products',
           url: '/products',
           src:'images/icon_products.png'
         },
         {
-          title: 'Invoices',
-          url: '/invoice',
-          src:'images/icon_Invoices.png'
-        },
-        {
           title: 'Costumers',
           url: '/costumers',
           src:'images/icon_customers.png'
-        },
-        {
-          title: 'Chatroom',
-          url: '/chat',
-          src:'images/icon_chat-room.png'
-        },
-        {
-          title: 'Calendar',
-          url: '/calendar',
-          src:'images/icon_calendar.png'
-        },
-        {
-          title: 'Help Center',
-          url: '/help',
-          src:'images/icon_help-center.png'
         },
         {
           title: 'Settings',

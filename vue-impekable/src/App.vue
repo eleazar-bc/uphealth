@@ -8,7 +8,6 @@
     <div class="home">
     <header class="container">
         <Search />
-        <Notifications />
         <User />
     </header>
     <router-view/>
@@ -18,10 +17,9 @@
 
 <script>
 import Logo from './components/Logo.vue';
-import Navigation from './components/Navigation.vue';
+import Navigation from './components/layout/Navigation.vue';
 
 import Search from './components/Search.vue';
-import Notifications from './components/Notifications.vue';
 import User from './components/User.vue';
 
 export default {
@@ -30,7 +28,6 @@ export default {
     Logo,
     Navigation,
     Search,
-    Notifications,
     User
   }
 }
@@ -96,10 +93,6 @@ html body .background-red {
 
 html body .background-orange {
   background-color: #FFCA83;
-}
-
-html body span.text-opacity {
-  opacity: .5;
 }
 
 .home header {

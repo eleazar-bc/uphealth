@@ -1,22 +1,19 @@
 <template>
     <div class="top-products container">
-        <div class="products-title">Top Products</div>
         <div class="products-header">
             <div class="header-name">Product</div>
             <div class="header-availability">Availability</div>
-            <div class="header-total">Total</div>
+            <div class="header-total">Price</div>
+            <div class="header-buy">Buy</div>
         </div>
         <div class="products">
             <Product v-for="product in products" v-bind:key="product.id" v-bind:product="product" />
-        </div>
-        <div class="show-more">
-            Show More
         </div>
     </div>
 </template>
 
 <script>
-import Product from './Product.vue';
+import Product from '../Product.vue';
 export default {
     name: 'MainContent',
     components: {Product},
@@ -24,33 +21,50 @@ export default {
         return {
             products: [{
                 id: 1,
-                name: 'Women\'s Vintage Peacoat',
-                src: 'images/product1.png',
+                name: 'Ibuprofen',
+                description: 'consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
                 availability: '320 In Stock',
                 color: 'green',
                 price: '$29,192'
             }, {
                 id: 4,
-                name: 'Women\'s Oatmeal Sweater',
-                src: 'images/product2.png',
+                name: 'Bio Flu',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
                 availability: 'Out of Stock',
                 color: 'red',
                 price: '$29,192'
             }, {
                 id: 2,
-                name: 'Women\'s Denim Shirt',
-                src: 'images/product3.png',
+                name: 'Biogesic',
+                description: 'ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
                 availability: '3 In Stock',
                 color: 'orange',
                 price: '$29,192'
             }, {
                 id: 3,
-                name: 'Women\'s Vintage Peacoat',
-                src: 'images/product4.png',
+                name: 'Lozarta',
+                description: 'Sample medicine description',
                 availability: '3 In Stock',
                 color: 'orange',
                 price: '$29,192'
-            }]
+            },
+            {
+                id: 5,
+                name: 'Lozarta',
+                description: 'Sample medicine description',
+                availability: '3 In Stock',
+                color: 'orange',
+                price: '$29,192'
+            },
+            {
+                id: 6,
+                name: 'Lozarta',
+                description: 'Sample medicine description',
+                availability: '3 In Stock',
+                color: 'orange',
+                price: '$29,192'
+            }
+            ]
         }
     }
 }
@@ -60,12 +74,6 @@ export default {
 .top-products {
   width: 66%;
   padding: 1em;
-}
-
-.top-products .products-title {
-  font-size: 1.125rem;
-  line-height: 13px;
-  margin: 1em 0;
 }
 
 .top-products .products-header {
@@ -88,7 +96,7 @@ export default {
 }
 
 .top-products .products-header .header-name {
-  width: 50%;
+  width: 40%;
 }
 
 .top-products .products {
@@ -100,22 +108,6 @@ export default {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0 1em;
-}
-
-.top-products .show-more {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 60px;
-  font-size: 0.8125rem;
-  line-height: 20px;
-  color: #3B86FF;
 }
 
 .top-products .show-more:hover {

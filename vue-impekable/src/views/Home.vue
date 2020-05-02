@@ -1,7 +1,5 @@
 <template>
     <div class="home-wrapper">
-        <div class="home-title">Products</div>
-        <Cards />
         <div class="home-content">
           <MainContent />
           <SideContent />
@@ -10,14 +8,12 @@
 </template>
 
 <script>
-import Cards from '../components/Cards.vue';
-import MainContent from '../components/MainContent.vue';
-import SideContent from '../components/SideContent.vue';
+import MainContent from '../components/layout/MainContent.vue';
+import SideContent from '../components/layout/SideContent.vue';
 
 export default {
   name: 'Home',
   components: {
-    Cards,
     MainContent,
     SideContent
   }
@@ -28,13 +24,6 @@ export default {
 .home .home-wrapper {
   margin: 1em 5vw;
 }
-
-.home .home-wrapper .home-title {
-  font-size: 1.75rem;
-  line-height: .40em;
-  margin: 1em 0;
-}
-
 .home .home-wrapper .home-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,8 +32,6 @@ export default {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
-
 @media (max-width: 1024px) {
   .home .home-wrapper {
     margin: 1em;

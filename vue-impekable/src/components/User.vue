@@ -1,6 +1,6 @@
 <template>
 <div class="user">
-    <div class="username">John Doe <img src="images/small-down.png" alt=""></div>
+    <div class="username">Admin <img src="images/small-down.png" alt=""></div>
     <img src="images/Avatar.png" alt="" class="avatar">
 </div>
 </template>

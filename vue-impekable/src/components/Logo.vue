@@ -1,7 +1,7 @@
 <template>
     <div class="logo-container">
         <router-link to="/" tag="h1" class="logo">
-          Impekable
+          Uphealth
         </router-link>
     </div>
 </template>
