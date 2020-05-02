@@ -47,7 +47,7 @@ const medicines = [
 ];
 
 export default {
-    getMedicines (cb) {
+    getMedicines: (cb) => {
         return cb(medicines);
     }
 }

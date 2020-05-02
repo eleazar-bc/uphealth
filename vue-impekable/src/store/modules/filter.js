@@ -11,10 +11,7 @@ const actions = {
 };
 
 const mutations = {
-    updateFilter: (state, search) => {
-        state.search = search
-    }
-
+    updateFilter: (state, search) => state.search = search
 };
 
 export default {

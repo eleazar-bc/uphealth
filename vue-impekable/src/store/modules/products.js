@@ -7,17 +7,13 @@ const state = {
 const getters = {};
 
 const actions = {
-    getAllMedicines({commit}) {
-        api.getMedicines(medicines => {
-            commit('setMedicines', medicines);
-        })
+    getAllMedicines: ({commit}) => {
+        api.getMedicines(medicines => commit('setMedicines', medicines))
     }
 };
 
 const mutations = {
-    setMedicines(state, medicines) {
-        state.medicines = medicines;
-    }
+    setMedicines: (state, medicines) => state.medicines = medicines
 };
 
 export default {

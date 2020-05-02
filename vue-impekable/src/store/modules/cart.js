@@ -25,7 +25,7 @@ const getters = {
 };
 
 const actions = {
-    addToCart ({state, commit}, orderItem) {
+    addToCart: ({state, commit}, orderItem) => {
         const isExists = state.items.find(item => item.id === orderItem.id);
         if(!isExists) {
             commit('addToCart', orderItem);
@@ -33,7 +33,7 @@ const actions = {
             commit('incrementItem', orderItem);
         }
     },
-    removeFromCart ({commit}, orderItem) {
+    removeFromCart: ({commit}, orderItem) => {
         const cartItem = state.items.find(item => item.id === orderItem.id);
         if(cartItem.quantity > 1) {
             commit('decrementItem', orderItem);
