@@ -64,6 +64,10 @@ export default {
   width: 40%;
 }
 
+.top-products .products-header .header-buy {
+  width: 38px;
+}
+
 .top-products .products {
   display: -webkit-box;
   display: -ms-flexbox;

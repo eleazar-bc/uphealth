@@ -5,16 +5,27 @@
         <p class="value" v-bind:class="content.color">&#8369; {{content}}</p>
         <p class="description">Total</p>
     </div>
-    <div class="card-menu">
+    <div @click="isDropdownActive = !isDropdownActive, showDropdown = !showDropdown" class="card-menu">
         <img src="images/menu-icon.png" alt="">
+        <DropdownMenu v-bind:class="{showDropdown}"/>
     </div>
+
 </div>
 </template>
 
 <script>
+import DropdownMenu from './DropdownMenu.vue';
+
 export default {
     name: 'Total',
-    props: ['content']
+    components: {DropdownMenu},
+    props: ['content'],
+    data() {
+      return {
+        isDropdownActive: false,
+        showDropdown: false
+      }
+    }
 }
 </script>
 
@@ -51,6 +62,15 @@ export default {
 .card .card-content p.description {
   font-size: 0.8125rem;
   line-height: 1em;
+}
+
+.card .card-menu {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card .card-menu:hover {

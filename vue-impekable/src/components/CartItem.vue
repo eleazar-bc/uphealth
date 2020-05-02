@@ -5,7 +5,9 @@
         <span class="quantity">Quantity: {{product.quantity}}</span>
     </div>
     <div class="detail-value">&#8369; {{product.total}}</div>
-    <img @click="removeFromCart(product)" class="remove-button" src="images/close.png" alt="">
+    <div @click="removeFromCart(product)" class="remove-button-container">
+      <img class="remove-button" src="images/close.png" alt="">
+    </div>
 </div>
 </template>
 
@@ -54,6 +56,15 @@ export default {
   opacity: .5;
 }
 
+.remove-button-container {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .detail .detail-description img {
   margin-right: 1em;
 }
@@ -61,9 +72,5 @@ export default {
 .detail .detail-value {
   font-size: 0.9375rem;
   line-height: 25px;
-}
-
-.remove-button:hover {
-  cursor: pointer;
 }
 </style>

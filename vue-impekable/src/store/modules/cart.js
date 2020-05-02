@@ -26,10 +26,19 @@ const getters = {
 
 const actions = {
     addToCart: ({state, commit}, orderItem) => {
+        if(orderItem.stock < 1) {
+            return;
+        }
+
         const isExists = state.items.find(item => item.id === orderItem.id);
         if(!isExists) {
             commit('addToCart', orderItem);
         } else {
+
+            if(orderItem.stock === isExists.quantity) {
+                return;
+            }
+
             commit('incrementItem', orderItem);
         }
     },

@@ -2,11 +2,15 @@
 <div class="product">
     <div class="product-info">
       <div class="product-name">{{product.name}}</div>
-      <div class="product-description">{{product.description}}</div>
+      <div class="product-brand">brand: {{product.brand}}</div>
+      <div class="product-dosage">dosage: {{product.dosage}}</div>
+      <div class="product-type">type: {{product.type}}</div>
     </div>
-    <div class="product-availability" v-bind:class="`background-${product.color}`">{{product.inventory}}</div>
+    <div class="product-availability" v-bind:class="availabilityBGColor">{{product.stock}}</div>
     <div class="product-price">&#8369; {{product.price}}</div>
-    <div @click="addToCart(product)" class="buy-button"><img src="images/Card Icon 1.png" alt=""></div>
+    <div @click="addToCart(product)" class="buy-button" v-bind:class="buyButton.class">
+      <img v-bind:src="buyButton.src" alt="">
+    </div>
 </div>
 </template>
 
@@ -18,6 +22,29 @@ export default {
     props: ['product'],
     methods: {
       ...mapActions(['addToCart'])
+    },
+    computed: {
+      buyButton() {
+        if(this.product.stock == 0) {
+          return {
+            class: 'not-available',
+            src: 'images/out of stock icon.png'
+          }
+        }
+        return {
+          class: 'available',
+          src: 'images/Card Icon 1.png'
+        }
+      },
+      availabilityBGColor() {
+        if(this.product.stock == 0) {
+          return 'background-red';
+        }
+        if(this.product.stock <= 10) {
+          return 'background-orange';
+        }
+        return 'background-green';
+      }
     }
 }
 </script>
@@ -51,10 +78,12 @@ export default {
 }
 
 .product .product-info .product-name {
-  line-height: 20px;
+  line-height: 30px;
+  text-transform: capitalize;
+  font-size: 1rem;
 }
 
-.product .product-info .product-description {
+.product-brand, .product-dosage, .product-type {
   opacity: 50%;
 }
 
@@ -74,7 +103,7 @@ export default {
           align-items: center;
 }
 
-.product .buy-button:hover {
+.product .available:hover {
   cursor: pointer;
 }
 </style>

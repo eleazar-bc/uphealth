@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .home .home-wrapper {
-  margin: 1em 5vw;
+  margin: 1em 1vw;
 }
 .home .home-wrapper .home-content {
   display: -webkit-box;

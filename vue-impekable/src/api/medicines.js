@@ -1,48 +1,57 @@
 const medicines = [
     {
         id: 1,
-        name: 'Ibuprofen',
-        description: 'consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-        inventory: 320,
-        color: 'green',
-        price: 50
-    }, {
-        id: 4,
-        name: 'Bio Flu',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-        inventory: 0,
-        color: 'red',
-        price: 29
-    }, {
+        name: 'amoxicillin',
+        brand: 'generic',
+        dosage: '500mg',
+        type: 'capsule',
+        price: 25,
+        stock: 100
+    },
+    {
         id: 2,
-        name: 'Biogesic',
-        description: 'ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-        inventory: 17,
-        color: 'orange',
-        price: 192
-    }, {
+        name: 'potencee',
+        brand: 'branded',
+        dosage: '500mg',
+        type: '',
+        price: 10,
+        stock: 9
+    },
+    {
         id: 3,
-        name: 'Antihistamine',
-        description: 'Sample medicine description',
-        inventory: 9,
-        color: 'orange',
-        price: 192
+        name: 'decolgen forte',
+        brand: 'branded',
+        dosage: '',
+        type: '',
+        price: 68,
+        stock: 0
+    },
+    {
+        id: 4,
+        name: 'omeprazole',
+        brand: 'generic',
+        dosage: '20mg',
+        type: '',
+        price: 24,
+        stock: 5
     },
     {
         id: 5,
-        name: 'Zyrtec',
-        description: 'Sample medicine description',
-        inventory: 6,
-        color: 'orange',
-        price: 25
+        name: 'paracetamol',
+        brand: 'generic',
+        dosage: '500mg',
+        type: 'tab',
+        price: 8,
+        stock: 13
     },
     {
         id: 6,
-        name: 'Lozartan',
-        description: 'Sample medicine description',
-        inventory: 10,
-        color: 'orange',
-        price: 65
+        name: 'losartan',
+        brand: 'generic',
+        dosage: '500mg',
+        type: '',
+        price: 13,
+        stock: 15
     }
 ];
 
