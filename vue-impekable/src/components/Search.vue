@@ -1,13 +1,15 @@
 <template>
 <div class="search">
     <img src="images/icon_search.png" alt="">
-    <input type="text" placeholder="Search...">
+    <input @input="updateFilter($event.target.value)" type="text" placeholder="Search...">
 </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
-    name: 'Search'
+    name: 'Search',
+    methods: mapActions(['updateFilter'])
 }
 </script>
 

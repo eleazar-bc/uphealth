@@ -2,7 +2,7 @@
 <div class="card container">
     <img src="images/Card Icon 2.png" >
     <div class="card-content">
-        <p class="value" v-bind:class="content.color">{{content.total}}</p>
+        <p class="value" v-bind:class="content.color">&#8369; {{content}}</p>
         <p class="description">Total</p>
     </div>
     <div class="card-menu">

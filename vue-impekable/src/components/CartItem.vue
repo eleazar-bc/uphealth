@@ -2,17 +2,21 @@
 <div class="detail">
     <div class="detail-description">
         <span class="name">{{product.name}}</span>
-        <span class="quantity">Quantity: 3</span>
+        <span class="quantity">Quantity: {{product.quantity}}</span>
     </div>
-    <div class="detail-value">{{product.price}}</div>
-    <img class="remove-button" src="images/close.png" alt="">
+    <div class="detail-value">&#8369; {{product.total}}</div>
+    <img @click="removeFromCart(product)" class="remove-button" src="images/close.png" alt="">
 </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
     name: 'CartItem',
-    props: ['product']
+    props: ['product'],
+    methods: {
+      ...mapActions(['removeFromCart'])
+    }
 }
 </script>
 

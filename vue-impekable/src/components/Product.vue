@@ -4,16 +4,21 @@
       <div class="product-name">{{product.name}}</div>
       <div class="product-description">{{product.description}}</div>
     </div>
-    <div class="product-availability" v-bind:class="`background-${product.color}`">{{product.availability}}</div>
-    <div class="product-price">{{product.price}}</div>
-    <div class="buy-button"><img src="images/Card Icon 1.png" alt=""></div>
+    <div class="product-availability" v-bind:class="`background-${product.color}`">{{product.inventory}}</div>
+    <div class="product-price">&#8369; {{product.price}}</div>
+    <div @click="addToCart(product)" class="buy-button"><img src="images/Card Icon 1.png" alt=""></div>
 </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
     name: 'Product',
-    props: ['product']
+    props: ['product'],
+    methods: {
+      ...mapActions(['addToCart'])
+    }
 }
 </script>
 

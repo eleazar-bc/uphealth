@@ -2,7 +2,6 @@
   <router-link v-bind:to="menu.url" tag="li">
     <img v-bind:src="menu.src" alt="">
     <span>{{menu.title}}</span>
-    <!-- <p>{{menu.title}}</p> -->
   </router-link>
 </template>
 
