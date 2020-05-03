@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown container">
         <ul>
-            <li>Change</li>
+            <li>Pay</li>
             <li>Done</li>
             <li>Clear</li>
         </ul>

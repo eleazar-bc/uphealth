@@ -2,10 +2,14 @@
 <div class="detail">
     <div class="detail-description">
         <span class="name">{{product.name}}</span>
-        <span class="quantity">Quantity: {{product.quantity}}</span>
+        <span
+          v-bind:class="{'animated pulse animation-settings': animate}"
+          @animationend="animate = false"
+          class="quantity"
+        >Quantity: {{product.quantity}}</span>
     </div>
     <div class="detail-value">&#8369; {{product.total}}</div>
-    <div @click="removeFromCart(product)" class="remove-button-container">
+    <div @click="removeFromCart(product), animate=true" class="remove-button-container">
       <img class="remove-button" src="images/close.png" alt="">
     </div>
 </div>
@@ -18,11 +22,16 @@ export default {
     props: ['product'],
     methods: {
       ...mapActions(['removeFromCart'])
+    },
+    data() {
+      return {
+        animate: false
+      }
     }
 }
 </script>
 
-<style>
+<style scoped>
 .detail {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -72,5 +81,9 @@ export default {
 .detail .detail-value {
   font-size: 0.9375rem;
   line-height: 25px;
+}
+.animation-settings {
+  animation-duration: 100ms;
+  color: #FF7285;
 }
 </style>

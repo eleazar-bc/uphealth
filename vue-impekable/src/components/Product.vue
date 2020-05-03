@@ -8,7 +8,12 @@
     </div>
     <div class="product-availability" v-bind:class="availabilityBGColor">{{product.stock}}</div>
     <div class="product-price">&#8369; {{product.price}}</div>
-    <div @click="addToCart(product)" class="buy-button" v-bind:class="buyButton.class">
+    <div
+      @click="addToCart(product), animate=true"
+      class="buy-button"
+      v-bind:class="[buyButton.class, {'animated rollOut animation-settings': animate && buyButton.class == 'available'}]"
+      @animationend="animate = false"
+    >
       <img v-bind:src="buyButton.src" alt="">
     </div>
 </div>
@@ -54,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .product {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -111,21 +116,7 @@ export default {
 .product .available:hover {
   cursor: pointer;
 }
-/* .product .buy-button img.animate {
-  animation-name: animate;
-  animation-duration: .25s;
-} */
-/* @keyframes animate {
-  0% { width: 38px; height: 38px}
-  10% { width: 39px; height: 39px}
-  20% { width: 40px; height: 40px}
-  30% { width: 41px; height: 41px}
-  40% { width: 42px; height: 42px}
-  50% { width: 43px; height: 43px}
-  60% { width: 42px; height: 42px}
-  70% { width: 41px; height: 41px}
-  80% { width: 40px; height: 40px}
-  90% { width: 39px; height: 39px}
-  100% { width: 38px; height: 38px}
-} */
+.animation-settings {
+  animation-duration: 100ms
+}
 </style>

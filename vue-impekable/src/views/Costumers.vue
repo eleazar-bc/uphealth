@@ -39,45 +39,45 @@ export default {
   data() {
     return {
       costumers: [{
-        src: 'images/avatar1.png',
+        src: 'images/Avatar.png',
         name: 'Miro Kirov',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar2.png',
+        src: 'images/Avatar.png',
         name: 'Nick Herasimenka',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar3.png',
+        src: 'images/Avatar.png',
         name: 'Glev Kuznetsov',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar4.png',
+        src: 'images/Avatar.png',
         name: 'Tony Stark',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar5.png',
+        src: 'images/Avatar.png',
         name: 'Valentin Salmon',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar6.png',
+        src: 'images/Avatar.png',
         name: 'Andrey Prokopenko',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar7.png',
+        src: 'images/Avatar.png',
         name: 'Bessie Berry',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       },{
-        src: 'images/avatar8.png',
+        src: 'images/Avatar.png',
         name: 'David James',
-        address: 'United States',
-        contact: 'Mobile : 871.567.4877'
+        address: 'Philippines',
+        contact: 'Mobile : 0912 345 6789'
       }]
     };
   }

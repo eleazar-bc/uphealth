@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link rel="text/stylesheet" href="animate.min.css">
     <div class="sidebar">
       <Logo />
       <Navigation />
@@ -21,6 +22,8 @@ import Navigation from './components/layout/Navigation.vue';
 
 import Search from './components/Search.vue';
 import User from './components/User.vue';
+
+import 'animate.css';
 
 export default {
   name: 'App',

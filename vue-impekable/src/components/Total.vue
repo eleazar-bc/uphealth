@@ -5,9 +5,14 @@
         <p class="value" v-bind:class="content.color">&#8369; {{content}}</p>
         <p class="description">Total</p>
     </div>
-    <div @click="isDropdownActive = !isDropdownActive, showDropdown = !showDropdown" class="card-menu">
+    <div
+      @click="showDropdown = !showDropdown, animate = !animate"
+      class="card-menu"
+    >
         <img src="images/menu-icon.png" alt="">
-        <DropdownMenu v-bind:class="{showDropdown}"/>
+        <DropdownMenu
+          v-bind:class="{showDropdown, 'animated flipInX animation-settings':animate}"
+        />
     </div>
 
 </div>
@@ -22,8 +27,8 @@ export default {
     props: ['content'],
     data() {
       return {
-        isDropdownActive: false,
-        showDropdown: false
+        showDropdown: false,
+        animate: false
       }
     }
 }
@@ -75,5 +80,8 @@ export default {
 
 .card .card-menu:hover {
   cursor: pointer;
+}
+.animation-settings {
+  animation-duration: 500ms
 }
 </style>

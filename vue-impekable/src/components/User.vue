@@ -43,6 +43,11 @@ export default {
   margin-left: .5em;
 }
 
+.user .avatar {
+  height: 32px;
+  width: 32px;
+}
+
 .user .avatar:hover {
   cursor: pointer;
 }

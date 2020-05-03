@@ -26,9 +26,9 @@ export default {
           src:'images/icon_dashboard.png'
         },
         {
-          title: 'Products',
-          url: '/products',
-          src:'images/icon_products.png'
+          title: 'Invoice',
+          url: '/invoice',
+          src:'images/icon_invoices.png'
         },
         {
           title: 'Costumers',
