@@ -94,7 +94,7 @@ export default {
 }
 
 .product-brand, .product-dosage, .product-type {
-  opacity: 50%;
+  opacity: .5;
 }
 
 .product .product-availability {
