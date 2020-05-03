@@ -3,14 +3,18 @@
         <ul>
             <li>Pay</li>
             <li>Done</li>
-            <li>Clear</li>
+            <li @click="clearCart">Clear</li>
         </ul>
     </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
-    name: 'DropdownMenu'
+    name: 'DropdownMenu',
+    methods: {
+        ...mapActions(['clearCart'])
+    }
 };
 </script>
 

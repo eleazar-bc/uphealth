@@ -49,6 +49,9 @@ const actions = {
         } else {
             commit('removeFromCart', orderItem);
         }
+    },
+    clearCart: ({commit}) => {
+        commit('clearCart');
     }
 };
 
@@ -65,7 +68,8 @@ const mutations = {
     decrementItem: (state, {id}) => {
         const cartItem = state.items.find(item => item.id === id);
         cartItem.quantity--;
-    }
+    },
+    clearCart: (state) => state.items = []
 };
 
 export default {
