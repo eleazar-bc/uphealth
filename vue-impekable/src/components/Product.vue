@@ -23,6 +23,11 @@ export default {
     methods: {
       ...mapActions(['addToCart'])
     },
+    data() {
+      return {
+        animate: false
+      }
+    },
     computed: {
       buyButton() {
         if(this.product.stock == 0) {
@@ -106,4 +111,21 @@ export default {
 .product .available:hover {
   cursor: pointer;
 }
+/* .product .buy-button img.animate {
+  animation-name: animate;
+  animation-duration: .25s;
+} */
+/* @keyframes animate {
+  0% { width: 38px; height: 38px}
+  10% { width: 39px; height: 39px}
+  20% { width: 40px; height: 40px}
+  30% { width: 41px; height: 41px}
+  40% { width: 42px; height: 42px}
+  50% { width: 43px; height: 43px}
+  60% { width: 42px; height: 42px}
+  70% { width: 41px; height: 41px}
+  80% { width: 40px; height: 40px}
+  90% { width: 39px; height: 39px}
+  100% { width: 38px; height: 38px}
+} */
 </style>
