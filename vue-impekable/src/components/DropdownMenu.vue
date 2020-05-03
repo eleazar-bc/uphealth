@@ -22,7 +22,7 @@ export default {
 .dropdown {
     position: absolute;
     right: 4em;
-    top: 0;
+    top: -76px;
     visibility: hidden;
 }
 ul li {
