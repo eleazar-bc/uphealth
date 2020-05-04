@@ -1,6 +1,6 @@
 <template>
-<div class="detail">
-    <div class="detail-description">
+<div class="item-container">
+    <div class="item-info">
         <span class="name">{{product.name}}</span>
         <span
           v-bind:class="{'animated pulse animation-settings': animate}"
@@ -8,7 +8,7 @@
           class="quantity"
         >Quantity: {{product.quantity}}</span>
     </div>
-    <div class="detail-value">&#8369; {{product.total}}</div>
+    <div class="item-value">&#8369; {{product.total}}</div>
     <div @click="removeFromCart(product), animate=true" class="remove-button-container">
       <img class="remove-button" src="images/close.png" alt="">
     </div>
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-.detail {
+.item-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,7 +45,7 @@ export default {
   height: 80px;
 }
 
-.detail .detail-description {
+.item-container .item-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,15 +57,20 @@ export default {
   flex-direction: column;
 }
 
-.name {
+.item-container .item-info .name {
   opacity: .8;
 }
 
-.quantity {
+.item-container .item-info .quantity {
   opacity: .5;
 }
 
-.remove-button-container {
+.item-container .item-value {
+  font-size: 0.9375rem;
+  line-height: 25px;
+}
+
+.item-container .remove-button-container {
   height: 40px;
   width: 40px;
   display: flex;
@@ -74,14 +79,6 @@ export default {
   cursor: pointer;
 }
 
-.detail .detail-description img {
-  margin-right: 1em;
-}
-
-.detail .detail-value {
-  font-size: 0.9375rem;
-  line-height: 25px;
-}
 .animation-settings {
   animation-duration: 100ms;
   color: #FF7285;

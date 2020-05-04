@@ -1,4 +1,5 @@
-import {db} from '../../db';
+// import {db} from '../../db';
+import medicines from '../../api/medicines';
 
 const state = {
     medicines: []
@@ -8,16 +9,18 @@ const getters = {};
 
 const actions = {
     getAllMedicines: ({commit}) => {
-        db.collection('products')
-        .get()
-        .then(querySnapshot => {
-            const documents = querySnapshot.docs.map(doc => {
-                const result = doc.data()
-                result.id = doc.id
-                return result
-            });
-            commit('setMedicines', documents)
-        })
+        medicines.getAllMedicines((medicines) => commit('setMedicines', medicines));
+
+        // db.collection('products')
+        // .get()
+        // .then(querySnapshot => {
+        //     const documents = querySnapshot.docs.map(doc => {
+        //         const result = doc.data()
+        //         result.id = doc.id
+        //         return result
+        //     });
+        //     commit('setMedicines', documents)
+        // })
     }
 };
 

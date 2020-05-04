@@ -45,7 +45,6 @@ li.router-link-active {
 }
 
 @media (max-width: 768px) {
-
   li span {
     display: none;
   }

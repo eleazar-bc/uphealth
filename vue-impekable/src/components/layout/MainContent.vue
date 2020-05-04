@@ -1,12 +1,12 @@
 <template>
-    <div class="top-products container">
-        <div class="products-header">
+    <div class="main-container container">
+        <div class="header-container">
             <div class="header-name">Product</div>
-            <div class="header-availability">Availability</div>
-            <div class="header-total">Price</div>
+            <div>Availability</div>
+            <div>Price</div>
             <div class="header-buy">Buy</div>
         </div>
-        <div class="products">
+        <div class="content">
             <Product v-for="product in filteredList" v-bind:key="product.id" v-bind:product="product" />
         </div>
     </div>
@@ -35,13 +35,13 @@ export default {
 }
 </script>
 
-<style>
-.top-products {
+<style scoped>
+.main-container {
   width: 66%;
   padding: 1em;
 }
 
-.top-products .products-header {
+.main-container .header-container {
   font-weight: 700;
   font-size: 0.6875rem;
   line-height: 15px;
@@ -60,15 +60,15 @@ export default {
   padding: 0 1em;
 }
 
-.top-products .products-header .header-name {
+.main-container .header-container .header-name {
   width: 40%;
 }
 
-.top-products .products-header .header-buy {
+.main-container .header-container .header-buy {
   width: 38px;
 }
 
-.top-products .products {
+.main-container .content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,12 +79,8 @@ export default {
   padding: 0 1em;
 }
 
-.top-products .show-more:hover {
-  cursor: pointer;
-}
-
 @media (max-width: 768px) {
-  .top-products {
+  .main-container {
     width: 100%;
     margin-bottom: 1em;
   }

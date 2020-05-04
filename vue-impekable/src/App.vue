@@ -49,6 +49,11 @@ html {
   font-weight: 400;
   color: #4D4F5C;
   background-color: #F0F0F7;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 html body #app {
@@ -115,7 +120,6 @@ html body .background-orange {
 .sidebar {
   color: #FFFFFF;
   background-color: #43425D;
-  height: 100vh;
   width: 20vw;
   min-width: 160px;
 }

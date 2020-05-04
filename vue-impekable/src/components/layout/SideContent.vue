@@ -1,11 +1,9 @@
 <template>
 <div class="side-content">
     <Total v-bind:content="cartTotal" />
-    <div class="current-orders container">
-      <div class="details-title">Current Orders</div>
-      <div class="details">
-        <CartItem v-for="product in cartItems" v-bind:key="product.id" v-bind:product="product"/>
-      </div>
+    <div class="main-content container">
+      <div class="content-title">Current Orders</div>
+      <CartItem v-for="product in cartItems" v-bind:key="product.id" v-bind:product="product"/>
     </div>
 </div>
 </template>
@@ -27,11 +25,11 @@ export default {
   width: 32%;
 }
 
-.current-orders {
+.main-content {
   padding: 1em;
 }
 
-.details-title {
+.content-title {
   font-size: 1.125rem;
   line-height: 13px;
   margin: 1em 0;

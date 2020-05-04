@@ -42,9 +42,7 @@ export default {
   .home {
     width: 90vw;
   }
-  .home header {
-    width: 90vw;
-  }
+
   .home .home-wrapper .home-content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

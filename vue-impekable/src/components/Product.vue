@@ -1,16 +1,15 @@
 <template>
-<div class="product">
+<div class="product-container">
     <div class="product-info">
       <div class="product-name">{{product.name}}</div>
-      <div class="product-brand">brand: {{product.brand}}</div>
-      <div class="product-dosage">dosage: {{product.dosage}}</div>
-      <div class="product-type">type: {{product.type}}</div>
+      <div class="product-description">brand: {{product.brand}}</div>
+      <div class="product-description">dosage: {{product.dosage}}</div>
+      <div class="product-description">type: {{product.type}}</div>
     </div>
     <div class="product-availability" v-bind:class="availabilityBGColor">{{product.stock}}</div>
-    <div class="product-price">&#8369; {{product.price}}</div>
+    <div>&#8369; {{product.price}}</div>
     <div
       @click="addToCart(product), animate=true"
-      class="buy-button"
       v-bind:class="[buyButton.class, {'animated rollOut animation-settings': animate && buyButton.class == 'available'}]"
       @animationend="animate = false"
     >
@@ -60,7 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.product {
+.product-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,7 +75,7 @@ export default {
   padding: 1em 0;
 }
 
-.product .product-info {
+.product-container .product-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,17 +86,18 @@ export default {
   width: 40%;
 }
 
-.product .product-info .product-name {
+.product-container .product-info .product-name {
   line-height: 30px;
   text-transform: capitalize;
   font-size: 1rem;
+  opacity: 100;
 }
 
-.product-brand, .product-dosage, .product-type {
+.product-container .product-info .product-description{
   opacity: .5;
 }
 
-.product .product-availability {
+.product-container .product-availability {
   border-radius: 14px;
   width: 90px;
   height: 24px;
@@ -113,7 +113,7 @@ export default {
           align-items: center;
 }
 
-.product .available:hover {
+.product-container .available:hover {
   cursor: pointer;
 }
 .animation-settings {
