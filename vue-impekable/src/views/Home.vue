@@ -21,10 +21,10 @@ export default {
 </script>
 
 <style scoped>
-.home .home-wrapper {
+.home-wrapper {
   margin: 1em 1vw;
 }
-.home .home-wrapper .home-content {
+.home-wrapper .home-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,17 +33,13 @@ export default {
           justify-content: space-between;
 }
 @media (max-width: 1024px) {
-  .home .home-wrapper {
+  .home-wrapper {
     margin: 1em;
   }
 }
 
 @media (max-width: 768px) {
-  .home {
-    width: 90vw;
-  }
-
-  .home .home-wrapper .home-content {
+  .home-wrapper .home-content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
