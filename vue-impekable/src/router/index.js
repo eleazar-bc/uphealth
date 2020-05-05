@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Inventory from '../views/Inventory'
 import Dashboard from '../views/Dashboard'
 import Costumers from '../views/Costumers.vue'
 
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
   path: '/home',
   name: 'Home',
   component: Home
+  },
+  {
+    path: '/inventory',
+    name: 'Inventory',
+    component: Inventory
   },
   {
     path: '/dashboard',

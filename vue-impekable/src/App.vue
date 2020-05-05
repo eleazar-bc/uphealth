@@ -2,7 +2,7 @@
     <div id="app">
         <link rel="text/stylesheet" href="animate.min.css" />
         <TheSidebar />
-        <div class="main">
+        <div class="main-container">
             <TheHeader />
             <router-view />
         </div>
@@ -93,13 +93,29 @@ html body .background-orange {
     background-color: #ffca83;
 }
 
-.main {
+.main-container {
     width: 80vw;
 }
 
+.main-container .component-container {
+    margin: 1em 1vw;
+}
+
+@media (max-width: 1024px) {
+    .component-container {
+        margin: 1em;
+    }
+}
+
 @media (max-width: 768px) {
-    .main {
+    .main-container {
         width: 90vw;
+    }
+    .component-container .content-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
     }
 }
 </style>

@@ -1,14 +1,17 @@
 <template>
-    <div class="home-wrapper">
-        <div class="home-title">
-            <h1>Dashboard</h1>
+    <div class="component-container">
+        <AddItem />
+
+        <div class="title">
+            <h1>Inventory</h1>
             <div class="content-search">
                 <img src="images/icon_search.png" alt />
                 <input type="text" placeholder="Search Name" />
             </div>
         </div>
 
-        <div class="home-content">
+        <div class="inventories">
+
             <div class="cards">
                 <Card v-for="product in products" v-bind:key="product.id" v-bind:product="product" />
             </div>
@@ -17,11 +20,13 @@
 </template>
 
 <script>
+import AddItem from '../components/AddItem';
 import Card from '../components/Card';
 
 export default {
-    name: "Home",
+    name: "Inventory",
     components: {
+        AddItem,
         Card
     },
     data() {
@@ -88,11 +93,7 @@ export default {
 </script>
 
 <style scoped>
-.home-wrapper {
-    margin: 1em 1vw;
-}
-
-.home-wrapper .home-title {
+.component-container .title {
     flex-wrap: wrap;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -130,14 +131,14 @@ export default {
     margin-right: 1em;
 }
 
-.home-wrapper .home-title h1 {
+.component-container .title h1 {
     font-weight: 400;
     font-size: 1.75rem;
     line-height: 0.4em;
     margin: 1em 0;
 }
 
-.home-wrapper .home-content {
+.component-container .inventories {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -192,20 +193,7 @@ export default {
     color: #ffffff;
 }
 
-@media (max-width: 1024px) {
-    .home-wrapper {
-        margin: 1em;
-    }
-}
-
 @media (max-width: 768px) {
-    .home .home-wrapper .home-content {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-    }
-
     .content-search {
         width: 100%;
         margin-bottom: 1em;

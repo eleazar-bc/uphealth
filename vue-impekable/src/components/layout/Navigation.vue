@@ -21,6 +21,11 @@ export default {
           src: 'images/icon_home.png'
         },
         {
+          title: 'Inventory',
+          url: '/inventory',
+          src:'images/icon_products.png'
+        },
+        {
           title: 'Dashboard',
           url: '/dashboard',
           src:'images/icon_dashboard.png'
