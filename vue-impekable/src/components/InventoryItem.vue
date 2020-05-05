@@ -2,7 +2,7 @@
     <div class="inventory-item-container container">
         <div class="upper-buttons-container">
             <img
-                @click="updateItem(product)"
+                @click="onSave"
                 v-bind:class="{'hide-me': !showSaveButton}"
                 class="save-button"
                 src="images/check_icon.png"
@@ -10,74 +10,42 @@
             />
             <img @click="confirmDelete" class="delete-button" src="images/close.png" alt />
         </div>
-        <div class="item-title-container">
-            <input
-                @change="onChange.name = 'green-border', showSaveButton = true"
-                type="text"
-                v-model="product.name"
-                v-bind:class="onChange.name"
-            />
-            <div class="input-label">product name</div>
-        </div>
-        <div class="item-detail-container">
-            <div class="input-group">
-                <input
-                    @change="onChange.brand = 'green-border', showSaveButton = true"
-                    type="text"
-                    v-model="product.brand"
-                    v-bind:class="onChange.brand"
-                />
-                <div class="input-label">brand</div>
-            </div>
-            <div class="input-group">
-                <input
-                    @change="onChange.dosage = 'green-border', showSaveButton = true"
-                    type="text"
-                    v-model="product.dosage"
-                    v-bind:class="onChange.dosage"
-                />
-                <div class="input-label">dosage</div>
-            </div>
-            <div class="input-group">
-                <input
-                    @change="onChange.type = 'green-border', showSaveButton = true"
-                    type="text"
-                    v-model="product.type"
-                    v-bind:class="onChange.type"
-                />
-                <div class="input-label">type</div>
-            </div>
-            <div class="input-group">
-                <input
-                    @change="onChange.stock = 'green-border', showSaveButton = true"
-                    type="text"
-                    v-model="product.stock"
-                    v-bind:class="onChange.stock"
-                />
-                <div class="input-label">stock</div>
-            </div>
-            <div class="input-group">
-                <input
-                    @change="onChange.price = 'green-border', showSaveButton = true"
-                    type="text"
-                    v-model="product.price"
-                    v-bind:class="onChange.price"
-                />
-                <div class="input-label">price</div>
-            </div>
-        </div>
+        <EditableInput
+            class="item-title-container"
+            @updated="handleUpdate"
+            v-bind:item="name"
+            v-bind:save="save"
+        />
+        <EditableInput
+            class="input-group"
+            v-for="detail in item"
+            v-bind:key="detail.name"
+            @updated="handleUpdate"
+            v-bind:item="detail"
+            v-bind:save="save"
+        />
     </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import EditableInput from "./EditableInput";
 
 export default {
     name: "InventoryItem",
+    components: { EditableInput },
     props: ["product"],
     methods: {
         ...mapActions(["deleteItem", "updateItem"]),
-        onItemChange() {},
+        handleUpdate({label, value}) {
+            this.showSaveButton = true;
+            this.product[label] = value;
+        },
+        onSave() {
+            this.updateItem(this.product);
+            this.showSaveButton = false;
+            this.save = !this.save;
+        },
         confirmDelete() {
             if (confirm("Are you sure?")) {
                 this.deleteItem(this.product.id);
@@ -86,15 +54,35 @@ export default {
     },
     data() {
         return {
-            showSaveButton: false,
-            onChange: {
-                name: "grey-border",
-                brand: "grey-border",
-                dosage: "grey-border",
-                type: "grey-border",
-                stock: "grey-border",
-                price: "grey-border"
-            }
+            save: false,
+            name: {
+                label: "name",
+                value: this.product.name,
+                titleStyle: true
+            },
+            item: [
+                {
+                    label: "brand",
+                    value: this.product.brand
+                },
+                {
+                    label: "dosage",
+                    value: this.product.dosage
+                },
+                {
+                    label: "type",
+                    value: this.product.type
+                },
+                {
+                    label: "stock",
+                    value: this.product.stock
+                },
+                {
+                    label: "price",
+                    value: this.product.price
+                }
+            ],
+            showSaveButton: false
         };
     }
 };
@@ -131,32 +119,7 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-.item-title-container input {
-    text-align: center;
-    height: 32px;
-}
-.input-label {
-    opacity: 0.5;
-    font-size: 0.8125rem;
-    align-self: center;
-}
-.item-detail-container {
-    display: flex;
-    flex-direction: column;
-}
-input[type="text"] {
-    border: none;
-    letter-spacing: 1px;
-}
-input[type="text"]:focus {
-    border-bottom: 2px solid #3b86ff;
-}
-input.grey-border {
-    border-bottom: 2px solid #e9e9f0;
-}
-input.green-border {
-    border-bottom: 2px solid #4ad991;
-}
+
 @media (max-width: 1024px) {
     .inventory-item-container {
         width: 49%;
