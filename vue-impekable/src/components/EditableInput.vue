@@ -13,7 +13,7 @@
 <script>
 export default {
     name: 'EditableInput',
-    props: ['item', 'saveFlag', 'cancelFlag'],
+    props: ['item', 'flags'],
     methods: {
         handleInputChange() {
             this.borderStyle = "green-border";
@@ -27,11 +27,11 @@ export default {
         }
     },
     watch: {
-        saveFlag: function() {
+        'flags.save': function() {
             this.restoreBorderStyle();
             this.setDefaultValue();
         },
-        cancelFlag: function() {
+        'flags.cancel': function() {
             this.item.value = this.defaultValue
             this.restoreBorderStyle()
         }

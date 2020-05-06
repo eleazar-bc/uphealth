@@ -1,6 +1,6 @@
 <template>
     <div class="add-item-container container">
-        <div @click="showInputGroup = !showInputGroup" class="title-container">
+        <div @click="showInputGroup = !showInputGroup; clearMessage()" class="title-container">
             <div class="title">Add new product</div>
             <div class="showHide">
                 <img v-if="showInputGroup" src="images/icon_up-arrow-small.png" alt />
@@ -9,29 +9,23 @@
         </div>
         <div v-if="showInputGroup" class="input-group animated fadeIn">
             <input
-                @click="onNameChange"
-                type="text"
-                v-model="newItem.name"
-                placeholder="Product Name"
+                v-for="label in labels"
+                @click="clearMessage"
+                v-model="newItem[label.value]"
+                v-bind:key="label.value"
+                v-bind:type="label.type"
+                v-bind:placeholder="label.placeholder"
             />
-            <input type="text" v-model="newItem.brand" placeholder="Brand (Generic / Branded)" />
-            <input type="text" v-model="newItem.dosage" placeholder="Dosage" />
-            <input
-                type="text"
-                v-model="newItem.type"
-                placeholder="Type (Capsule / Tablet / Syrup / Etc)"
-            />
-            <input type="number" v-model="newItem.stock" placeholder="Stock"/>
-            <input type="number" v-model="newItem.price" placeholder="Price"/>
+
             <div class="lower-container">
                 <div class="message">
-                    <p class="green" v-if="status.text ==='success'">
+                    <p class="green animated bounceIn" v-if="status.text ==='success'">
                         You've successfully added
                         <span class="added-item">{{status.latest}}</span> to your inventory.
                     </p>
                 </div>
                 <div class="action-buttons">
-                    <div v-if="newItem.name != undefined" @click="onSave" class="button">Save</div>
+                    <div v-if="isNameValid" @click="onSave" class="button">Save</div>
                 </div>
             </div>
         </div>
@@ -47,6 +41,38 @@ export default {
         return {
             showInputGroup: false,
             newItem: {},
+            labels: [
+                {
+                    value: 'name',
+                    placeholder: 'Product Name',
+                    type: 'text'
+                },
+                {
+                    value: 'brand',
+                    placeholder: 'Brand (Generic / Branded)',
+                    type: 'text'
+                },
+                {
+                    value: 'dosage',
+                    placeholder: 'Dosage',
+                    type: 'text'
+                },
+                {
+                    value: 'type',
+                    placeholder: 'Type (Capsule / Tablet)',
+                    type: 'text'
+                },
+                {
+                    value: 'stock',
+                    placeholder: 'Stock Available',
+                    type: 'number'
+                },
+                {
+                    value: 'price',
+                    placeholder: 'Price',
+                    type: 'number'
+                }
+            ],
             status: {
                 text: "no action",
                 latest:  ''
@@ -56,20 +82,20 @@ export default {
     methods: {
         ...mapActions(["addItem"]),
         onSave() {
-            if (this.newItem.name) {
-                this.newItem.stock = (this.newItem.stock  ? this.newItem.stock : 0);
-                this.newItem.price= (this.newItem.price ? this.newItem.price : 0);
-                this.addItem(this.newItem);
-                this.status.latest = this.newItem.name;
-                this.status.text = "success";
-
-                this.newItem = {};
-            } else {
-                this.status.text = "fail";
-            }
+            this.newItem.stock = (this.newItem.stock  ? this.newItem.stock : 0);
+            this.newItem.price= (this.newItem.price ? this.newItem.price : 0);
+            this.addItem(this.newItem);
+            this.status.latest = this.newItem.name;
+            this.newItem = {};
+            this.status.text = "success";
         },
-        onNameChange() {
-            this.status.text = "no action";
+        clearMessage() {
+            this.status.text = "";
+        }
+    },
+    computed: {
+        isNameValid() {
+            return this.newItem.name != undefined && this.newItem.name.length > 0;
         }
     }
 };

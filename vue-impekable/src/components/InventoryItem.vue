@@ -2,41 +2,27 @@
     <div class="inventory-item-container container">
         <div class="upper-buttons-container">
             <div class="update-buttons">
-                <img
+                <img src="images/check_icon.png" alt=""
                     @click="onSave"
                     v-if="showSaveButton"
                     class="save-button"
-                    src="images/check_icon.png"
-                    alt=""
                 />
-                <img
+                <img src="images/close.png" alt=""
                     @click="onCancel"
-                    class="cancel-button"
-                    src="images/close.png" alt=""
                     v-if="showSaveButton"
-                >
-                <span
-                    class="green-text"
-                    v-if="showSaveMessage"
-                >Updated</span>
+                    class="cancel-button"
+                />
+                <span class="green-text" v-if="showSaveMessage">Updated</span>
             </div>
             <img @click="confirmDelete" class="delete-button" src="images/Icon Trash.png" alt />
         </div>
         <EditableInput
-            class="item-title-container"
-            @updated="handleUpdate"
-            v-bind:item="name"
-            v-bind:saveFlag="saveFlag"
-            v-bind:cancelFlag="cancelFlag"
-        />
-        <EditableInput
-            class="input-group"
             v-for="detail in item"
-            v-bind:key="detail.name"
-            @updated="handleUpdate"
+            v-bind:key="detail.label"
+            v-bind:class="detail.class"
             v-bind:item="detail"
-            v-bind:saveFlag="saveFlag"
-            v-bind:cancelFlag="cancelFlag"
+            v-bind:flags="flags"
+            @updated="handleUpdate"
         />
     </div>
 </template>
@@ -59,11 +45,11 @@ export default {
         onSave() {
             this.updateItem(this.product);
             this.showSaveButton = false;
-            this.saveFlag = !this.saveFlag;
+            this.flags.save = !this.flags.save;
             this.showSaveMessage = true;
         },
         onCancel() {
-            this.cancelFlag = !this.cancelFlag;
+            this.flags.cancel = !this.flags.cancel;
             this.showSaveButton = false;
         },
         confirmDelete() {
@@ -75,33 +61,41 @@ export default {
     data() {
         return {
             defaultProp: {},
-            saveFlag: false,
-            cancelFlag: false,
-            name: {
-                label: "name",
-                value: this.product.name,
-                titleStyle: true
+            flags: {
+                save: false,
+                cancel: false
             },
             item: [
                 {
+                    label: "name",
+                    value: this.product.name,
+                    titleStyle: true,
+                    class: "item-title-container"
+                },
+                {
                     label: "brand",
-                    value: this.product.brand
+                    value: this.product.brand,
+                    class: "input-group"
                 },
                 {
                     label: "dosage",
-                    value: this.product.dosage
+                    value: this.product.dosage,
+                    class: "input-group"
                 },
                 {
                     label: "type",
-                    value: this.product.type
+                    value: this.product.type,
+                    class: "input-group"
                 },
                 {
                     label: "stock",
-                    value: this.product.stock
+                    value: this.product.stock,
+                    class: "input-group"
                 },
                 {
                     label: "price",
-                    value: this.product.price
+                    value: this.product.price,
+                    class: "input-group"
                 }
             ],
             showSaveButton: false,
