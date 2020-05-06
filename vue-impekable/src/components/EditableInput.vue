@@ -13,7 +13,7 @@
 <script>
 export default {
     name: 'EditableInput',
-    props: ['item', 'save'],
+    props: ['item', 'saveFlag', 'cancelFlag'],
     methods: {
         handleInputChange() {
             this.borderStyle = "green-border";
@@ -21,17 +21,29 @@ export default {
         },
         restoreBorderStyle() {
             this.borderStyle = "grey-border"
+        },
+        setDefaultValue() {
+            this.defaultValue= this.item.value;
         }
     },
     watch: {
-        save: function() {
+        saveFlag: function() {
             this.restoreBorderStyle();
+            this.setDefaultValue();
+        },
+        cancelFlag: function() {
+            this.item.value = this.defaultValue
+            this.restoreBorderStyle()
         }
     },
     data() {
         return {
+            defaultValue: '',
             borderStyle: "grey-border"
         }
+    },
+    mounted() {
+        this.setDefaultValue();
     }
 }
 </script>

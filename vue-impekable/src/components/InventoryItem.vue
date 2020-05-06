@@ -1,20 +1,33 @@
 <template>
     <div class="inventory-item-container container">
         <div class="upper-buttons-container">
-            <img
-                @click="onSave"
-                v-bind:class="{'hide-me': !showSaveButton}"
-                class="save-button"
-                src="images/check_icon.png"
-                alt
-            />
-            <img @click="confirmDelete" class="delete-button" src="images/close.png" alt />
+            <div class="update-buttons">
+                <img
+                    @click="onSave"
+                    v-if="showSaveButton"
+                    class="save-button"
+                    src="images/check_icon.png"
+                    alt=""
+                />
+                <img
+                    @click="onCancel"
+                    class="cancel-button"
+                    src="images/close.png" alt=""
+                    v-if="showSaveButton"
+                >
+                <span
+                    class="green-text"
+                    v-if="showSaveMessage"
+                >Updated</span>
+            </div>
+            <img @click="confirmDelete" class="delete-button" src="images/Icon Trash.png" alt />
         </div>
         <EditableInput
             class="item-title-container"
             @updated="handleUpdate"
             v-bind:item="name"
-            v-bind:save="save"
+            v-bind:saveFlag="saveFlag"
+            v-bind:cancelFlag="cancelFlag"
         />
         <EditableInput
             class="input-group"
@@ -22,7 +35,8 @@
             v-bind:key="detail.name"
             @updated="handleUpdate"
             v-bind:item="detail"
-            v-bind:save="save"
+            v-bind:saveFlag="saveFlag"
+            v-bind:cancelFlag="cancelFlag"
         />
     </div>
 </template>
@@ -39,12 +53,18 @@ export default {
         ...mapActions(["deleteItem", "updateItem"]),
         handleUpdate({label, value}) {
             this.showSaveButton = true;
+            this.showSaveMessage = false;
             this.product[label] = value;
         },
         onSave() {
             this.updateItem(this.product);
             this.showSaveButton = false;
-            this.save = !this.save;
+            this.saveFlag = !this.saveFlag;
+            this.showSaveMessage = true;
+        },
+        onCancel() {
+            this.cancelFlag = !this.cancelFlag;
+            this.showSaveButton = false;
         },
         confirmDelete() {
             if (confirm("Are you sure?")) {
@@ -54,7 +74,9 @@ export default {
     },
     data() {
         return {
-            save: false,
+            defaultProp: {},
+            saveFlag: false,
+            cancelFlag: false,
             name: {
                 label: "name",
                 value: this.product.name,
@@ -82,7 +104,8 @@ export default {
                     value: this.product.price
                 }
             ],
-            showSaveButton: false
+            showSaveButton: false,
+            showSaveMessage: false
         };
     }
 };
@@ -100,26 +123,26 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-.save-button,
-.delete-button {
+.update-buttons {
+    display: flex;
+    align-items: center;
+}
+.upper-buttons-container img {
     height: 32px;
-    width: 32px;
     padding: 9px;
     cursor: pointer;
 }
 .save-button {
-    width: 38px;
+    margin-right: 1em;
 }
-.hide-me {
-    visibility: hidden;
-}
-
 .item-title-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+.green-text {
+    color: #4ad991;
+}
 @media (max-width: 1024px) {
     .inventory-item-container {
         width: 49%;

@@ -26,7 +26,6 @@ const getters = {
 
 const actions = {
     addToCart: ({state, commit}, orderItem) => {
-        console.log(orderItem);
         if(orderItem.stock < 1) {
             return;
         }

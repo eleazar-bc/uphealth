@@ -21,7 +21,6 @@ const actions = {
                 result.id = doc.id
                 return result
             });
-            console.log(documents);
             commit('setMedicines', documents)
         })
     },
