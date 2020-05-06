@@ -9,6 +9,7 @@
         </div>
         <div v-if="showInputGroup" class="input-group animated fadeIn">
             <input
+                class="new-input"
                 v-for="label in labels"
                 @click="clearMessage"
                 v-model="newItem[label.value]"
@@ -118,7 +119,7 @@ export default {
     flex-direction: column;
     margin-top: 1em;
 }
-.input-group input {
+.input-group input.new-input {
     margin: 0.3em 2em;
     height: 32px;
     border: none;

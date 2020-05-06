@@ -1,5 +1,5 @@
 <template>
-    <div class="inventory-item-container container">
+    <div class="inventory-item-container container" v-bind:class="{'animated rollOut': animateMe}">
         <div class="upper-buttons-container">
             <div class="update-buttons">
                 <img src="images/check_icon.png" alt=""
@@ -54,12 +54,14 @@ export default {
         },
         confirmDelete() {
             if (confirm("Are you sure?")) {
+                this.animateMe = true;
                 this.deleteItem(this.product.id);
             }
         }
     },
     data() {
         return {
+            animateMe: false,
             defaultProp: {},
             flags: {
                 save: false,

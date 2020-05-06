@@ -3,9 +3,9 @@
         <AddItem />
         <div class="inventory-container">
             <div class="title">Inventory</div>
-            <div class="inventory">
+            <transition-group name="inventory" class="inventory" tag="div">
                 <InventoryItem v-for="product in allMedicines" v-bind:key="product.id" v-bind:product="product"/>
-            </div>
+            </transition-group>
         </div>
     </div>
 </template>
@@ -51,6 +51,18 @@ export default {
     flex-wrap: wrap;
 }
 
+.inventory-enter, .inventory-leave-to{
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.inventory-leave-active {
+  position: absolute;
+}
+
+.inventory-move {
+  transition: transform 1s;
+}
 
 @media (max-width: 768px) {
 

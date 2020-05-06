@@ -51,7 +51,6 @@ export default {
 <style scoped>
 input.name-input {
     text-align: center;
-    height: 32px;
 }
 .input-label {
     opacity: 0.5;
