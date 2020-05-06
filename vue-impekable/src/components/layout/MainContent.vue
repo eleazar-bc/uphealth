@@ -25,7 +25,6 @@ export default {
       }),
       filteredList(){
         return this.allMedicines.filter(medicine => {
-          if(medicine.name == undefined) medicine.name = ''; //remove this
           return medicine.name.toLowerCase().includes(this.searchFilter.toLowerCase());
         })
       }

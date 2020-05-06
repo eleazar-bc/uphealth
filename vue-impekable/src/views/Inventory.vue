@@ -4,7 +4,7 @@
         <div class="inventory-container">
             <div class="title">Inventory</div>
             <transition-group name="inventory" class="inventory" tag="div">
-                <InventoryItem v-for="product in allMedicines" v-bind:key="product.id" v-bind:product="product"/>
+                <InventoryItem v-for="product in filteredList" v-bind:key="product.id" v-bind:product="product"/>
             </transition-group>
         </div>
     </div>
@@ -23,11 +23,18 @@ export default {
     },
     computed: {
       ...mapState({
-        allMedicines: state => state.products.medicines
-      })
+        allMedicines: state => state.products.medicines,
+        searchFilter: state => state.filter.search
+      }),
+      filteredList(){
+        return this.allMedicines.filter(medicine => {
+          return medicine.name.toLowerCase().includes(this.searchFilter.toLowerCase());
+        })
+      }
     },
     created() {
         this.$store.dispatch('getAllMedicines');
+
     }
 };
 </script>
@@ -61,7 +68,7 @@ export default {
 }
 
 .inventory-move {
-  transition: transform 1s;
+  transition: transform 500ms;
 }
 
 @media (max-width: 768px) {

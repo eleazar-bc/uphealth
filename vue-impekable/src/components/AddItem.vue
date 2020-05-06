@@ -17,12 +17,11 @@
                 v-bind:type="label.type"
                 v-bind:placeholder="label.placeholder"
             />
-
             <div class="lower-container">
-                <div class="message">
+                <div class="message" @click="showInputGroup = !showInputGroup; clearMessage()">
                     <p class="green animated bounceIn" v-if="status.text ==='success'">
                         You've successfully added
-                        <span class="added-item">{{status.latest}}</span> to your inventory.
+                        <span class="added-item">{{status.latest}}</span> to your inventory. (Click to minimize)
                     </p>
                 </div>
                 <div class="action-buttons">
@@ -141,6 +140,7 @@ export default {
 }
 .message {
     text-align: center;
+    cursor: pointer;
 }
 .message .added-item {
     text-transform: uppercase;
