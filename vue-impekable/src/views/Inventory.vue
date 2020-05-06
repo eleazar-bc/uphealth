@@ -34,7 +34,7 @@ export default {
     },
     created() {
         this.$store.dispatch('getAllMedicines');
-
+        this.$store.dispatch('clearFilter');
     }
 };
 </script>

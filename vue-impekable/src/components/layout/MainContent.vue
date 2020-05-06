@@ -30,7 +30,8 @@ export default {
       }
     },
     created() {
-        this.$store.dispatch('getAllMedicines', 'getFilter');
+        this.$store.dispatch('getAllMedicines');
+        this.$store.dispatch('clearFilter');
     }
 }
 </script>

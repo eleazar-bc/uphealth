@@ -20,7 +20,7 @@
             <div class="lower-container">
                 <div class="message" @click="showInputGroup = !showInputGroup; clearMessage()">
                     <p class="green animated bounceIn" v-if="status.text ==='success'">
-                        You've successfully added
+                        You've added
                         <span class="added-item">{{status.latest}}</span> to your inventory. (Click to minimize)
                     </p>
                 </div>

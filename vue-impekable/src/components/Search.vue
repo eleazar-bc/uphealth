@@ -1,15 +1,20 @@
 <template>
 <div class="search">
     <img src="images/icon_search.png" alt="">
-    <input @input="updateFilter($event.target.value)" type="text" placeholder="Search...">
+    <input @input="updateFilter($event.target.value)" v-bind:value="getFilter" type="text" placeholder="Search...">
 </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 export default {
     name: 'Search',
-    methods: mapActions(['updateFilter'])
+    methods: {
+      ...mapActions(['updateFilter'])
+    },
+    computed: {
+      ...mapGetters(['getFilter'])
+    }
 }
 </script>
 
