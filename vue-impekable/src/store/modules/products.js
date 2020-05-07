@@ -39,6 +39,16 @@ const actions = {
     deleteItem: ({commit}, id) => {
         db.collection('products').doc(id).delete();
         commit('deleteItem', id);
+    },
+    checkout: ({commit}, cart) => {
+        // const id = firestoreIdGenerator();
+        // let transaction = {};
+        // transaction.date = firebase.firestore.FieldValue.serverTimestamp();
+        // transaction.items = cart;
+        // db.collection('transactions').doc(id).set(transaction);
+        cart.forEach(item => {
+            commit('decrementInventory', item);
+        });
     }
 };
 
@@ -49,8 +59,15 @@ const mutations = {
         const index = state.medicines.indexOf(item);
         state.medicines.splice(index, 1, {...item});
     },
-    deleteItem:  (state, id) => state.medicines = state.medicines.filter(item => item.id != id)
+    deleteItem:  (state, id) => state.medicines = state.medicines.filter(item => item.id != id),
+    decrementInventory: (state, item) => {
+        const stateItem = state.medicines.find(medicine => medicine.id === item.id);
+        stateItem.stock = stateItem.stock - item.quantity;
+        // stateItem.sold = item.quantity;
+        db.collection('products').doc(stateItem.id).set(stateItem);
     }
+}
+
 
 export default {
     state,

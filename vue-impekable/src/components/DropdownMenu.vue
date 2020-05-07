@@ -2,19 +2,24 @@
     <div class="dropdown container">
         <ul>
             <li>Pay</li>
-            <li>Done</li>
+            <li @click="handleCheckout">Done</li>
             <li @click="clearCart">Clear</li>
         </ul>
     </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 export default {
     name: 'DropdownMenu',
     methods: {
-        ...mapActions(['clearCart'])
-    }
+        ...mapActions(['clearCart', 'checkout']),
+        handleCheckout() {
+            this.checkout(this.cartItems);
+            this.clearCart();
+        }
+    },
+    computed: mapGetters(['cartItems'])
 };
 </script>
 

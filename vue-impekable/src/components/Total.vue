@@ -6,6 +6,7 @@
         <p class="description">Total</p>
     </div>
     <div
+      v-if="cartItems.length > 0"
       @click="showDropdown = !showDropdown, animate = !animate"
       class="card-menu"
     >
@@ -19,12 +20,14 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import DropdownMenu from './DropdownMenu.vue';
 
 export default {
     name: 'Total',
     components: {DropdownMenu},
     props: ['content'],
+    computed: mapGetters(['cartItems']),
     data() {
       return {
         showDropdown: false,
