@@ -1,0 +1,36 @@
+.main {
+    @import './header';
+    .main-wrapper {
+        margin: 1em 5vw;
+        .main-title {
+            font-size: toRem(28px);
+            line-height: .40em;
+            margin: 1em 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .costumer-title {
+            .content-search {
+                height: 45px;
+                font-size: toRem(13px);
+                line-height: 20px;
+                width: 49%;
+                display: flex;
+                align-items: center;
+                background-color: #ffffff;
+                padding: 0 1em;
+                input {
+                    height: 100%;
+                    width: 100%;
+                    border: none;
+                }
+                img {
+                    margin-right: 1em;
+                }
+            }
+        }
+        @import './cards';
+        @import './main-content';
+    }
+}

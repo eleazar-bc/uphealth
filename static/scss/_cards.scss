@@ -1,0 +1,31 @@
+.cards {
+    display: flex;
+    justify-content: space-between;
+    .card {
+        width: 32%;
+        display: flex;
+        align-items: center;
+        padding: .5em 1em;
+        margin: 0 0 1em 0;
+        img{
+            margin-right: 1em;
+        }
+        .card-content {
+            width: 100%;
+            p {
+                line-height: .3em;
+            }
+            p.value {
+                font-size: toRem(18px);
+                line-height: .13em;
+            }
+            p.description {
+                font-size: toRem(13px);
+                line-height: 1em;
+            }
+        }
+        .card-menu {
+            @include cursorPointer;
+        }
+    }
+}
