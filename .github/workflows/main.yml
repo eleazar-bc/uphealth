@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: ${{ secrets.APP_NAME }}/dist
+          path: app/dist
   deploy:
     name: Deploy
     needs: build
