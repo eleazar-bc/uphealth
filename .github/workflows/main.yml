@@ -4,6 +4,10 @@ on:
     branches:
       - deploy
 
+on:
+  watch:
+    types: [started]
+
 jobs:
   build:
     name: Build
