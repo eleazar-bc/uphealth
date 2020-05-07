@@ -9,6 +9,7 @@
         </div>
         <div v-if="showInputGroup" class="input-group animated fadeIn">
             <input
+                v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                 class="new-input"
                 v-for="label in labels"
                 @click="clearMessage"

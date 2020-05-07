@@ -1,10 +1,11 @@
 <template>
   <div>
         <input
-            v-on:keyup="handleInputChange()"
+            v-on:input="handleInputChange()"
             type="text"
             v-model="item.value"
             v-bind:class="[borderStyle, {'name-input': item.titleStyle}]"
+            @keyup.enter="focusNextInput"
         />
         <div class="input-label">{{item.label}}</div>
     </div>
@@ -24,6 +25,10 @@ export default {
         },
         setDefaultValue() {
             this.defaultValue= this.item.value;
+        },
+        focusNextInput(event) {
+            const nextInputElement = event.target.parentElement.nextSibling.children[0];
+            nextInputElement.focus();
         }
     },
     watch: {

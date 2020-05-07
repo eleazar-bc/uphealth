@@ -63,8 +63,8 @@ const mutations = {
     decrementInventory: (state, item) => {
         const stateItem = state.medicines.find(medicine => medicine.id === item.id);
         stateItem.stock = stateItem.stock - item.quantity;
-        // stateItem.sold = item.quantity;
-        db.collection('products').doc(stateItem.id).set(stateItem);
+        stateItem.sold = item.quantity;
+        // db.collection('products').doc(stateItem.id).set(stateItem);
     }
 }
 
