@@ -1,0 +1,98 @@
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    .top-products {
+        width: 66%;
+        padding: 1em;
+        .products-title {
+            font-size: toRem(18px);
+            line-height: 13px;
+            margin: 1em 0;
+        }
+        .products-header {
+            font-weight: 700;
+            font-size: toRem(11px);
+            line-height: 15px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F5F6FA;
+            height: 45px;
+            padding: 0 1em;
+            .header-name {
+                width: 50%;
+            }
+        }
+        .products {
+            display: flex;
+            flex-direction: column;
+            padding: 0 1em;
+            .product {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 82px;
+                font-size: toRem(13px);
+                border-bottom: 1px solid #F1F1F3;
+                .product-name {
+                    display: flex;
+                    align-items: center;
+                    width: 50%;
+                    img {
+                        margin-right: 1em;
+                    }
+                }
+                .product-availability {
+                    border-radius: 14px;
+                    width: 90px;
+                    height: 24px;
+                    font-size: toRem(11px);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        .show-more {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            font-size: toRem(13px);
+            line-height: 20px;
+            color: #3B86FF;
+            @include cursorPointer;
+        }
+    }
+    .quick-details {
+        width: 32%;
+        padding: 1em;
+        .details-title {
+            font-size: toRem(18px);
+            line-height: 13px;
+            margin: 1em 0;
+        }
+        .details {
+            .detail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 80px;
+                .detail-description {
+                    display: flex;
+                    align-items: center;
+                    font-size: toRem(13px);
+                    line-height: 20px;
+                    img {
+                        margin-right: 1em;
+                    }
+                }
+                .detail-value {
+                    font-size: toRem(15px);
+                    line-height: 25px;
+                }
+            }
+        }
+    }
+}

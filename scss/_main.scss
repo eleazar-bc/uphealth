@@ -1,0 +1,14 @@
+.main {
+    @import './header';
+    .main-wrapper {
+        margin: 1em 5vw;
+        .main-title {
+            font-size: toRem(28px);
+            line-height: .40em;
+            margin: 1em 0;
+        }
+        @import './cards';
+        @import './main-content';
+    }
+    
+}

@@ -1,0 +1,24 @@
+$primary-black: #4D4F5C;
+$secandary-black: #43425D;
+$white: #FFFFFF;
+$blue: #56D9FE;
+$purple: #A3A0FB;
+$green: #4AD991;
+$orange: #FFCA83;
+$sidebar-background-color: #43425D;
+$sidebar-background-color-dark: #3C3B54;
+$body-background-color: #F0F0F7;
+
+@function toRem($size) {
+    @return $size / 16px * 1rem;
+}
+
+@function toEm($size) {
+    @return $size / 16px * 1em;
+}
+
+@mixin cursorPointer {
+    &:hover {
+        cursor: pointer;
+    }
+}

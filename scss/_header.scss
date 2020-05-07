@@ -1,0 +1,53 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+    height: 70px;
+    padding: 1em;
+    .search {
+        width: 60vw;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        input {
+            height: 90%;
+            width: 90%;
+            border: none;
+            background-color: $white;
+            margin-left: 1em;
+            color: $primary-black;
+            font-size: toRem(13px);
+            line-height: .20em;
+        }
+    }
+    .notifications {
+        display: flex;
+        justify-content: space-around;
+        width: 10vw;
+        img {
+            margin: 0 .2em;
+            @include cursorPointer;
+        }
+    }
+    .user {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 10vw;
+        .username {
+            display: flex;
+            align-items: center;
+            font-size: toRem(13px);
+            line-height: .20em;
+            @include cursorPointer;
+            img {
+                margin-left: .5em;
+            }
+        }
+        .avatar {
+            @include cursorPointer;
+        }
+        
+    }
+}

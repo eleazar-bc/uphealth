@@ -1,0 +1,50 @@
+.sidebar {
+    color: $white;
+    background-color: $sidebar-background-color;
+    width: 20vw;
+    min-width: 160px;
+    .logo-container {
+        height: 70px;
+        background-color: $sidebar-background-color-dark;
+        margin-bottom: .2em;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        h1{
+            font-weight: 700;
+            font-size: toRem(15px);
+            line-height: 21px;
+            letter-spacing: .2rem;
+            padding-left: 5%;
+            text-transform: uppercase;
+            @include cursorPointer;
+        }
+    }
+    .main-nav {
+        ul {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            li {
+                height: 53px;
+                display: flex;
+                align-items: center;
+                padding-left: 1.5vw;
+                margin-bottom: .1em;
+                @include cursorPointer;
+                border-left: 5px solid $sidebar-background-color;
+                img {
+                    margin-right: 1em;
+                }
+                &:hover {
+                    background-color: $sidebar-background-color-dark;
+                    border-left: 5px solid $purple;
+                }
+            }
+            li.active {
+                background-color: $sidebar-background-color-dark;
+                border-left: 5px solid $purple;
+            }
+        }
+    }
+}
