@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import InventoryChart from '../components/InventoryChart';
 
 export default {
@@ -12,12 +13,20 @@ export default {
     components: {
         InventoryChart
     },
+    computed: {
+      ...mapState({
+        allMedicines: state => state.products.medicines
+    }),
+    },
     data() {
         return {
             datacollection: null,
             chartData: [],
-            options: []
+            options: null
         };
+    },
+    created() {
+        this.$store.dispatch('getAllMedicines');
     },
     mounted() {
         this.fillData();
@@ -25,23 +34,27 @@ export default {
     methods: {
         fillData() {
             this.datacollection = {
-                labels: ['medicine1','medicine2'],
+                labels: this.allMedicines.map(med => med.name),
                 datasets: [
                     {
                         label: "Available Stock",
-                        backgroundColor: "#f87979",
-                        data: [1, 22]
+                        backgroundColor: "#69e4a6",
+                        data: this.allMedicines.map(med => parseInt(med.stock)),
+                        categoryPercentage: 1
                     }
                 ]
             };
+            this.options = {
+
+            }
         }
     }
-};
+}
 </script>
 
 <style scoped>
 .small {
-    max-width: 600px;
-    margin: 150px auto;
+    max-width: 50%;
+    /* margin: 1em auto; */
 }
 </style>
