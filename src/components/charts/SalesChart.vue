@@ -1,13 +1,12 @@
 <template>
     <div>
         <BarChart :chartData="chartData" :options="options" />
-        <!-- <div class="test" v-for="item in modified" :key="item.id">{{item}}</div> -->
     </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import BarChart from "../components/BarChart";
+import BarChart from "./BarChart";
 
 export default {
     name: "SalesChart",
@@ -17,8 +16,7 @@ export default {
     data() {
         return {
             chartData: {},
-            options: null,
-            combinedTransactions: []
+            options: null
         };
     },
     computed: {
@@ -28,31 +26,15 @@ export default {
     },
     created() {
         this.$store.dispatch("getAllSales");
-        this.combineItems();
-    },
-    methods: {
-        combineItems() {
-            this.transactions.forEach(transaction => {
-                this.combinedTransactions.push(this.sumQuantity(transaction.sales));
-            });
-        },
-        sumQuantity(salesArray) {
-            return salesArray.reduce((current, next) => ({
-                id: next.id,
-                name: next.name,
-                price: next.price,
-                quantity: current.quantity + next.quantity
-            }));
-        }
     },
     mounted() {
         (this.chartData = {
-            labels: this.combinedTransactions.map(transaction => transaction.name),
+            labels: this.transactions.map(transaction => transaction.name),
             datasets: [
                 {
                     label: "Sold",
                     backgroundColor: "#69e4a6",
-                    data: this.combinedTransactions.map(transaction => parseInt(transaction.quantity)),
+                    data: this.transactions.map(transaction => parseInt(transaction.quantity)),
                 }
             ]
         }),

@@ -20,14 +20,11 @@ const actions = {
                 return result;
             });
             commit('setSales', sales);
-            console.log('-----getAllSales-----');
-            console.log(state.sales);
         })
     },
     updateSales: ({commit}, cart) => {
         cart.forEach(item => {
             const itemRef = db.collection('transactions').doc(item.id);
-
             db.runTransaction(transaction => {
                 return transaction.get(itemRef).then(doc => {
                     if (!doc.data()) {
@@ -41,40 +38,35 @@ const actions = {
                     }
                 });
             })
-
             commit('updateSales', item);
         });
-        console.log('-----updateSales-----');
-        console.log(state.sales);
     }
 };
 
 const mutations = {
-    setSales: (state, sales) => state.sales = sales,
+    setSales: (state, sales) => state.sales = combineItems(sales),
     updateSales: (state, item) => {
-        if(state.sales[item.id]){
-            state.sales[item.id].push(item);
-        } else {
-            state.sales[item.id] = [item];
-        }
+        const index = state.sales.findIndex(sale => sale.id === item.id);
+        state.sales[index].quantity = state.sales[index].quantity + item.quantity;
     }
 };
 
-// function combineItems(sales) {
-//     let result = [];
-//     sales.forEach(transaction => {
-//         result.push(sumQuantity(transaction.sales));
-//     });
-//     return result;
-// }
-// function sumQuantity(salesArray) {
-//     return salesArray.reduce((current, next) => ({
-//         id: next.id,
-//         name: next.name,
-//         price: next.price,
-//         quantity: current.quantity + next.quantity
-//     }));
-// }
+function combineItems(sales) {
+    let result = [];
+    sales.forEach(transaction => {
+        result.push(sumQuantity(transaction.sales));
+    });
+    return result;
+}
+
+function sumQuantity(salesArray) {
+    return salesArray.reduce((current, next) => ({
+        id: next.id,
+        name: next.name,
+        price: next.price,
+        quantity: current.quantity + next.quantity
+    }));
+}
 
 export default {
     state,

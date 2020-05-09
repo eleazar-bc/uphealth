@@ -6,7 +6,7 @@
 
 <script>
 import { mapState } from "vuex";
-import BarChart from "../components/BarChart";
+import BarChart from "./BarChart";
 
 export default {
     name: "InventoryChart",
