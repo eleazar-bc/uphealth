@@ -2,7 +2,7 @@
   <div>
         <input
             v-on:input="handleInputChange()"
-            type="text"
+            v-bind:type="item.type"
             v-model="item.value"
             v-bind:class="[borderStyle, {'name-input': item.titleStyle}]"
             @keyup.enter="focusNextInput"
@@ -18,6 +18,9 @@ export default {
     methods: {
         handleInputChange() {
             this.borderStyle = "green-border";
+            if(this.item.type == 'number') {
+                this.item.value = parseInt(this.item.value);
+            }
             this.$emit('updated', this.item);
         },
         restoreBorderStyle() {
@@ -62,14 +65,14 @@ input.name-input {
     font-size: 0.8125rem;
     align-self: center;
 }
-input[type="text"] {
+input {
     border: none;
     letter-spacing: 1px;
 }
-input[type="text"]:focus {
+input:focus {
     border-bottom: 2px solid #3b86ff;
 }
-input[type="text"].green-border:focus {
+input.green-border:focus {
     border-bottom: 2px solid #4ad991;
 }
 input.grey-border {

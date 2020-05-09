@@ -1,47 +1,19 @@
 <template>
     <div>
-        <InventoryChart :chartData="chartData" :options="options" />
+        <!-- <InventoryChart /> -->
+        <SalesChart />
     </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import InventoryChart from "../components/InventoryChart";
+// import InventoryChart from "../components/InventoryChart";
+import SalesChart from "../components/SalesChart";
 
 export default {
     name: "Dashboard",
     components: {
-        InventoryChart
-    },
-    computed: {
-        ...mapState({
-            allMedicines: state => state.products.medicines
-        })
-    },
-    data() {
-        return {
-            chartData: {},
-            options: null
-        };
-    },
-    created() {
-        this.$store.dispatch("getAllMedicines");
-    },
-    mounted() {
-        (this.chartData = {
-            labels: this.allMedicines.map(med => med.name),
-            datasets: [
-                {
-                    label: "Available Stock",
-                    backgroundColor: "#69e4a6",
-                    data: this.allMedicines.map(med => parseInt(med.stock)),
-                }
-            ]
-        }),
-        (this.options = {
-            responsive: true,
-            maintainAspectRatio: false
-        });
+        // InventoryChart,
+        SalesChart
     }
 };
 </script>

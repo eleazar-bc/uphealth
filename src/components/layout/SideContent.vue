@@ -5,7 +5,7 @@
       <div class="content-title">Current Orders</div>
       <CartItem v-for="product in cartItems" v-bind:key="product.id" v-bind:product="product"/>
       <div v-if="cartItems.length == 0" class="empty-container">
-        <p class="message">Click <img src="images/Card Icon 1.png" alt=""> to add items.</p>
+        <p class="empty-message">Click <img src="images/Card Icon 1.png" alt=""> to add items.</p>
       </div>
     </div>
 </div>
@@ -43,12 +43,12 @@ export default {
   justify-content: center;
   background-color: #F0F2F8;
 }
-.empty-container .message {
+.empty-container .empty-message {
   display: flex;
   align-items: center;
   opacity: .8;
 }
-.empty-container .message img {
+.empty-container .empty-message img {
   margin: 0 .5em;
 }
 @media (max-width: 768px) {

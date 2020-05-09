@@ -83,8 +83,8 @@ export default {
     methods: {
         ...mapActions(["addItem"]),
         onSave() {
-            this.newItem.stock = (this.newItem.stock  ? this.newItem.stock : 0);
-            this.newItem.price= (this.newItem.price ? this.newItem.price : 0);
+            this.newItem.stock = (this.newItem.stock  ? parseInt(this.newItem.stock) : 0);
+            this.newItem.price= (this.newItem.price ? parseInt(this.newItem.price) : 0);
             this.addItem(this.newItem);
             this.status.latest = this.newItem.name;
             this.newItem = {};

@@ -13,9 +13,10 @@ import {mapActions, mapGetters} from 'vuex';
 export default {
     name: 'DropdownMenu',
     methods: {
-        ...mapActions(['clearCart', 'checkout']),
+        ...mapActions(['clearCart', 'checkout', 'updateSales']),
         handleCheckout() {
             this.checkout(this.cartItems);
+            this.updateSales(this.cartItems);
             this.clearCart();
         }
     },

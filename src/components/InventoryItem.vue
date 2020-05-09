@@ -72,32 +72,38 @@ export default {
                     label: "name",
                     value: this.product.name,
                     titleStyle: true,
-                    class: "item-title-container"
+                    class: "item-title-container",
+                    type: 'text'
                 },
                 {
                     label: "brand",
                     value: this.product.brand,
-                    class: "input-group"
+                    class: "input-group",
+                    type: 'text'
                 },
                 {
                     label: "dosage",
                     value: this.product.dosage,
-                    class: "input-group"
+                    class: "input-group",
+                    type: 'text'
                 },
                 {
                     label: "type",
                     value: this.product.type,
-                    class: "input-group"
+                    class: "input-group",
+                    type: 'text'
                 },
                 {
                     label: "stock",
                     value: this.product.stock,
-                    class: "input-group"
+                    class: "input-group",
+                    type: 'number'
                 },
                 {
                     label: "price",
                     value: this.product.price,
-                    class: "input-group"
+                    class: "input-group",
+                    type: 'number'
                 }
             ],
             showSaveButton: false,
