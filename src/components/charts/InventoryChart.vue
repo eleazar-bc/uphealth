@@ -21,27 +21,35 @@ export default {
     data() {
         return {
             chartData: {},
-            options: null
+            options: {}
         };
     },
     created() {
         this.$store.dispatch("getAllMedicines");
     },
     mounted() {
-        (this.chartData = {
-            labels: this.allMedicines.map(med => med.name),
-            datasets: [
-                {
-                    label: "Available Stock",
-                    backgroundColor: "#69e4a6",
-                    data: this.allMedicines.map(med => parseInt(med.stock)),
-                }
-            ]
-        }),
-        (this.options = {
-            responsive: true,
-            maintainAspectRatio: false
-        });
+        this.instantiateChartData();
+        this.instantiateChartOptions();
+    },
+    methods: {
+        instantiateChartData() {
+            this.chartData = {
+                labels: this.allMedicines.map(med => med.name),
+                datasets: [
+                    {
+                        label: "Available Stock",
+                        backgroundColor: "#69e4a6",
+                        data: this.allMedicines.map(med => parseInt(med.stock))
+                    }
+                ]
+            };
+        },
+        instantiateChartOptions() {
+            this.options = {
+                responsive: true,
+                maintainAspectRatio: false
+            };
+        }
     }
 };
 </script>

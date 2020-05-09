@@ -13,35 +13,45 @@ export default {
     components: {
         BarChart
     },
-    data() {
-        return {
-            chartData: {},
-            options: null
-        };
-    },
     computed: {
         ...mapState({
             transactions: state => state.transactions.sales
         })
     },
+    data() {
+        return {
+            chartData: {},
+            options: {}
+        };
+    },
     created() {
         this.$store.dispatch("getAllSales");
     },
     mounted() {
-        (this.chartData = {
-            labels: this.transactions.map(transaction => transaction.name),
-            datasets: [
-                {
-                    label: "Sold",
-                    backgroundColor: "#69e4a6",
-                    data: this.transactions.map(transaction => parseInt(transaction.quantity)),
-                }
-            ]
-        }),
-        (this.options = {
-            responsive: true,
-            maintainAspectRatio: false
-        });
+        this.instantiateChartData();
+        this.instantiateChartOptions();
+    },
+    methods: {
+        instantiateChartData() {
+            this.chartData = {
+                labels: this.transactions.map(transaction => transaction.name),
+                datasets: [
+                    {
+                        label: "Sold",
+                        backgroundColor: "#69e4a6",
+                        data: this.transactions.map(transaction =>
+                            parseInt(transaction.quantity)
+                        )
+                    }
+                ]
+            };
+        },
+        instantiateChartOptions() {
+            this.options = {
+                responsive: true,
+                maintainAspectRatio: false
+            };
+        }
     }
 };
 </script>
