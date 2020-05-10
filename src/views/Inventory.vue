@@ -33,7 +33,7 @@ export default {
       }
     },
     created() {
-        this.$store.dispatch('getAllMedicines');
+        this.$store.dispatch('getAllMedicines', 'createdAt');
         this.$store.dispatch('clearFilter');
     }
 };

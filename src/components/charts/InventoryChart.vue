@@ -1,6 +1,7 @@
 <template>
     <div>
-        <BarChart :chartData="chartData" :options="options" />
+        <BarChart :chartData="stocksData" :options="options" />
+        <BarChart :chartData="salesData" :options="options" />
     </div>
 </template>
 
@@ -15,39 +16,80 @@ export default {
     },
     computed: {
         ...mapState({
-            allMedicines: state => state.products.medicines
+            allMedicines: state => state.products.medicines,
+            transactions: state => state.transactions.sales
         })
     },
     data() {
         return {
-            chartData: {},
+            stocksData: {},
+            salesData: {},
             options: {}
         };
     },
     created() {
         this.$store.dispatch("getAllMedicines");
+        this.$store.dispatch("getAllSales");
     },
     mounted() {
-        this.instantiateChartData();
-        this.instantiateChartOptions();
+        this.stocksChartData();
+        this.salesChartData();
+        this.chartOptions();
     },
     methods: {
-        instantiateChartData() {
-            this.chartData = {
+        stocksChartData() {
+            this.stocksData = {
                 labels: this.allMedicines.map(med => med.name),
                 datasets: [
                     {
                         label: "Available Stock",
-                        backgroundColor: "#69e4a6",
+                        backgroundColor: "#3b86ff",
                         data: this.allMedicines.map(med => parseInt(med.stock))
+                    },
+                    {
+                        label: "Sold",
+                        backgroundColor: "#69e4a6",
+                        data: this.transactions.map(transaction =>
+                            parseInt(transaction.quantity)
+                        )
                     }
                 ]
             };
         },
-        instantiateChartOptions() {
+        salesChartData() {
+            this.salesData = {
+                labels: this.transactions.map(transaction => transaction.name),
+                datasets: [
+                    {
+                        label: "Sold",
+                        backgroundColor: "#69e4a6",
+                        data: this.transactions.map(transaction =>
+                            parseInt(transaction.quantity)
+                        )
+                    }
+                ]
+            };
+        },
+        chartOptions() {
             this.options = {
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                ticks: {
+                    min: 5
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            // display: true,
+                            // minRotation: 1,
+                            // maxRotation: 1,
+                            // min: 1,
+                            // max: 100,
+                            // maxTicksLimit: 10
+                        }
+                    }]
+                }
             };
         }
     }

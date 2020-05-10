@@ -15,9 +15,11 @@ export default {
     methods: {
         ...mapActions(['clearCart', 'checkout', 'updateSales']),
         handleCheckout() {
-            this.checkout(this.cartItems);
-            this.updateSales(this.cartItems);
-            this.clearCart();
+            if(confirm('Done with this transaction?')) {
+                this.checkout(this.cartItems);
+                this.updateSales(this.cartItems);
+                this.clearCart();
+            }
         }
     },
     computed: mapGetters(['cartItems'])

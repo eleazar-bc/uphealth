@@ -10,11 +10,11 @@ const state = {
 const getters = {};
 
 const actions = {
-    getAllMedicines: ({commit}) => {
+    getAllMedicines: ({commit}, payload = 'createdAt') => {
         /** For offline testing */
         // dummyMedicines.getAllMedicines((medicines) => commit('setMedicines', medicines));
 
-        db.collection('products').orderBy('createdAt')
+        db.collection('products').orderBy(payload)
         .get()
         .then(querySnapshot => {
             const documents = querySnapshot.docs.map(doc => {
