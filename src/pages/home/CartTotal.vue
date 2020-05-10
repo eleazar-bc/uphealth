@@ -11,7 +11,7 @@
       class="card-menu"
     >
         <img src="images/menu-icon.png" alt="">
-        <DropdownMenu
+        <CartMenu
           v-bind:class="{showDropdown, 'animated flipInX animation-settings':animate}"
         />
     </div>
@@ -21,11 +21,11 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import DropdownMenu from './DropdownMenu.vue';
+import CartMenu from './CartMenu.vue';
 
 export default {
-    name: 'Total',
-    components: {DropdownMenu},
+    name: 'CartTotal',
+    components: {CartMenu},
     props: ['content'],
     computed: mapGetters(['cartItems']),
     data() {

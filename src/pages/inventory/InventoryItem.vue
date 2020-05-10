@@ -30,13 +30,14 @@
 <script>
 import { mapActions } from "vuex";
 import EditableInput from "./EditableInput";
+import {getInputOptions} from '../../utils/productUtils'
 
 export default {
     name: "InventoryItem",
     components: { EditableInput },
     props: ["product"],
     methods: {
-        ...mapActions(["deleteItem", "updateItem"]),
+        ...mapActions(["deleteItem", "updateItem", "deleteSales"]),
         handleUpdate({label, value}) {
             this.showSaveButton = true;
             this.showSaveMessage = false;
@@ -56,6 +57,7 @@ export default {
             if (confirm("Are you sure?")) {
                 this.animateMe = true;
                 this.deleteItem(this.product.id);
+                this.deleteSales(this.product.id);
             }
         }
     },
@@ -67,39 +69,14 @@ export default {
                 save: false,
                 cancel: false
             },
-            item: [
-                {
-                    label: "name",
-                    value: this.product.name,
-                    titleStyle: true,
-                    class: "item-title-container"
-                },
-                {
-                    label: "brand",
-                    value: this.product.brand,
-                    class: "input-group"
-                },
-                {
-                    label: "dosage",
-                    value: this.product.dosage,
-                    class: "input-group"
-                },
-                {
-                    label: "type",
-                    value: this.product.type,
-                    class: "input-group"
-                },
-                {
-                    label: "stock",
-                    value: this.product.stock,
-                    class: "input-group"
-                },
-                {
-                    label: "price",
-                    value: this.product.price,
-                    class: "input-group"
-                }
-            ],
+            item: getInputOptions({
+                name: this.product.name,
+                brand: this.product.brand,
+                dosage: this.product.dosage,
+                type: this.product.type,
+                stock: this.product.stock,
+                price: this.product.price
+            }),
             showSaveButton: false,
             showSaveMessage: false
         };

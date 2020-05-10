@@ -7,17 +7,17 @@
             <div class="header-buy">Buy</div>
         </div>
         <div class="content">
-            <Product v-for="product in filteredList" v-bind:key="product.id" v-bind:product="product" />
+            <ProductItem v-for="product in filteredList" v-bind:key="product.id" v-bind:product="product" />
         </div>
     </div>
 </template>
 
 <script>
 import {mapState} from 'vuex';
-import Product from '../Product.vue';
+import ProductItem from './ProductItem.vue';
 export default {
-    name: 'MainContent',
-    components: {Product},
+    name: 'HomeContent',
+    components: {ProductItem},
     computed: {
       ...mapState({
         allMedicines: state => state.products.medicines,
@@ -30,7 +30,6 @@ export default {
       }
     },
     created() {
-        this.$store.dispatch('getAllMedicines');
         this.$store.dispatch('clearFilter');
     }
 }
@@ -78,6 +77,8 @@ export default {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0 1em;
+  max-height: 75vh;
+  overflow: auto;
 }
 
 @media (max-width: 768px) {

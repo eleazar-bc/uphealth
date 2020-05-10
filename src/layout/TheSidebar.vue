@@ -1,18 +1,18 @@
 <template>
   <div class="sidebar">
       <TheLogo />
-      <Navigation />
+      <TheNavigation />
     </div>
 </template>
 
 <script>
-import TheLogo from '../../components/TheLogo'
-import Navigation from '../../components/layout/Navigation.vue';
+import TheLogo from '../components/TheLogo.vue'
+import TheNavigation from '../layout/TheNavigation.vue';
 export default {
     name: 'TheSidebar',
     components: {
         TheLogo,
-        Navigation
+        TheNavigation
     }
 }
 </script>

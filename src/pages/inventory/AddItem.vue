@@ -35,6 +35,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { getLabels } from '../../utils/productUtils';
 
 export default {
     name: "AddItem",
@@ -42,38 +43,7 @@ export default {
         return {
             showInputGroup: false,
             newItem: {},
-            labels: [
-                {
-                    value: 'name',
-                    placeholder: 'Product Name',
-                    type: 'text'
-                },
-                {
-                    value: 'brand',
-                    placeholder: 'Brand (Generic / Branded)',
-                    type: 'text'
-                },
-                {
-                    value: 'dosage',
-                    placeholder: 'Dosage',
-                    type: 'text'
-                },
-                {
-                    value: 'type',
-                    placeholder: 'Type (Capsule / Tablet)',
-                    type: 'text'
-                },
-                {
-                    value: 'stock',
-                    placeholder: 'Stock Available',
-                    type: 'number'
-                },
-                {
-                    value: 'price',
-                    placeholder: 'Price',
-                    type: 'number'
-                }
-            ],
+            labels: getLabels(),
             status: {
                 text: "no action",
                 latest:  ''
@@ -83,8 +53,8 @@ export default {
     methods: {
         ...mapActions(["addItem"]),
         onSave() {
-            this.newItem.stock = (this.newItem.stock  ? this.newItem.stock : 0);
-            this.newItem.price= (this.newItem.price ? this.newItem.price : 0);
+            this.newItem.stock = (this.newItem.stock  ? parseInt(this.newItem.stock) : 0);
+            this.newItem.price= (this.newItem.price ? parseInt(this.newItem.price) : 0);
             this.addItem(this.newItem);
             this.status.latest = this.newItem.name;
             this.newItem = {};

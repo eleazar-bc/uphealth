@@ -1,11 +1,14 @@
 <template>
 <div class="side-content">
-    <Total v-bind:content="cartTotal" />
+    <CartTotal v-bind:content="cartTotal" />
+
     <div class="main-content container">
       <div class="content-title">Current Orders</div>
+
       <CartItem v-for="product in cartItems" v-bind:key="product.id" v-bind:product="product"/>
+
       <div v-if="cartItems.length == 0" class="empty-container">
-        <p class="message">Click <img src="images/Card Icon 1.png" alt=""> to add items.</p>
+        <p class="empty-message">Click <img src="images/Card Icon 1.png" alt=""> to add items.</p>
       </div>
     </div>
 </div>
@@ -13,12 +16,12 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import CartItem from '../CartItem.vue';
-import Total from '../Total.vue';
+import CartItem from './CartItem.vue';
+import CartTotal from './CartTotal';
 
 export default {
     name: 'SideContent',
-    components: {CartItem, Total},
+    components: {CartItem, CartTotal},
     computed: mapGetters(['cartItems', 'cartTotal'])
 }
 </script>
@@ -30,6 +33,8 @@ export default {
 
 .main-content {
   padding: 1em;
+  max-height: 75vh;
+  overflow: auto;
 }
 
 .content-title {
@@ -43,12 +48,12 @@ export default {
   justify-content: center;
   background-color: #F0F2F8;
 }
-.empty-container .message {
+.empty-container .empty-message {
   display: flex;
   align-items: center;
   opacity: .8;
 }
-.empty-container .message img {
+.empty-container .empty-message img {
   margin: 0 .5em;
 }
 @media (max-width: 768px) {

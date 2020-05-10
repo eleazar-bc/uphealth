@@ -1,19 +1,24 @@
 import firebase from 'firebase/app';
 import {db} from '../../db';
 import {firestoreIdGenerator} from '../../utils/firestoreIdGenerator';
-// import medicines from '../../api/medicines';
+// import dummyMedicines from '../../api/medicines';
 
 const state = {
     medicines: []
 };
 
-const getters = {};
+const getters = {
+    getAllMedicines: () => {
+        return state.medicines;
+    }
+};
 
 const actions = {
-    getAllMedicines: ({commit}) => {
-    //     medicines.getAllMedicines((medicines) => commit('setMedicines', medicines));
+    setMedicines: ({commit}, payload = 'createdAt') => {
+        /** For offline testing */
+        // dummyMedicines.getAllMedicines((medicines) => commit('setMedicines', medicines));
 
-        db.collection('products').orderBy('createdAt')
+        db.collection('products').orderBy(payload)
         .get()
         .then(querySnapshot => {
             const documents = querySnapshot.docs.map(doc => {
@@ -27,7 +32,7 @@ const actions = {
 
     addItem: ({commit}, newItem) => {
         const id = firestoreIdGenerator();
-        newItem.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        newItem.createdAt = new Date();
         db.collection('products').doc(id).set(newItem);
         newItem.id = id;
         commit('addItem', newItem);
@@ -41,12 +46,10 @@ const actions = {
         commit('deleteItem', id);
     },
     checkout: ({commit}, cart) => {
-        // const id = firestoreIdGenerator();
-        // let transaction = {};
-        // transaction.date = firebase.firestore.FieldValue.serverTimestamp();
-        // transaction.items = cart;
-        // db.collection('transactions').doc(id).set(transaction);
         cart.forEach(item => {
+            db.collection('products').doc(item.id).update({
+                stock: firebase.firestore.FieldValue.increment(parseInt(-item.quantity))
+            });
             commit('decrementInventory', item);
         });
     }
@@ -63,8 +66,6 @@ const mutations = {
     decrementInventory: (state, item) => {
         const stateItem = state.medicines.find(medicine => medicine.id === item.id);
         stateItem.stock = stateItem.stock - item.quantity;
-        stateItem.sold = item.quantity;
-        // db.collection('products').doc(stateItem.id).set(stateItem);
     }
 }
 

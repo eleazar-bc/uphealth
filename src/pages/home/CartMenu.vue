@@ -11,12 +11,15 @@
 <script>
 import {mapActions, mapGetters} from 'vuex';
 export default {
-    name: 'DropdownMenu',
+    name: 'CartMenu',
     methods: {
-        ...mapActions(['clearCart', 'checkout']),
+        ...mapActions(['clearCart', 'checkout', 'updateSales']),
         handleCheckout() {
-            this.checkout(this.cartItems);
-            this.clearCart();
+            if(confirm('Done with this transaction?')) {
+                this.checkout(this.cartItems);
+                this.updateSales(this.cartItems);
+                this.clearCart();
+            }
         }
     },
     computed: mapGetters(['cartItems'])

@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: 'MenuItem',
+    name: 'NavigationItem',
     props: ['menu']
 }
 </script>

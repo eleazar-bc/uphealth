@@ -1,19 +1,19 @@
 <template>
     <header class="header-container container">
-        <Search />
-        <User />
+        <TheSearchBar />
+        <TheUser />
     </header>
 </template>
 
 <script>
-import Search from '../../components/Search.vue';
-import User from '../../components/User.vue';
+import TheSearchBar from '../components/TheSearchBar.vue';
+import TheUser from '../components/TheUser.vue';
 
 export default {
     name: 'TheHeader',
     components: {
-        Search,
-        User
+        TheSearchBar,
+        TheUser
     }
 };
 </script>

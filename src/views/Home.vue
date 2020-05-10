@@ -1,20 +1,20 @@
 <template>
     <div class="component-container">
         <div class="content-container">
-          <MainContent />
+          <HomeContent />
           <SideContent />
         </div>
     </div>
 </template>
 
 <script>
-import MainContent from '../components/layout/MainContent.vue';
-import SideContent from '../components/layout/SideContent.vue';
+import HomeContent from '../pages/home/HomeContent.vue';
+import SideContent from '../pages/home/SideContent.vue';
 
 export default {
   name: 'Home',
   components: {
-    MainContent,
+    HomeContent,
     SideContent
   }
 }
