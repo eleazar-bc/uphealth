@@ -7,10 +7,12 @@ const state = {
     ]
 }
 
-const getters = {};
+const getters = {
+    getAllsales: () => state.sales
+};
 
 const actions = {
-    getAllSales: ({commit}) => {
+    setAllSales: ({commit}) => {
         db.collection('transactions')
         .get()
         .then(querySnapshot => {

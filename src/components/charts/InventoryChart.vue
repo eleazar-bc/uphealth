@@ -28,8 +28,8 @@ export default {
         };
     },
     created() {
-        this.$store.dispatch("getAllMedicines");
-        this.$store.dispatch("getAllSales");
+        // this.$store.dispatch("getAllMedicines");
+        // this.$store.dispatch("getAllSales");
     },
     mounted() {
         this.stocksChartData();

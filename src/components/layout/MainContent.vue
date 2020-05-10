@@ -23,6 +23,9 @@ export default {
         allMedicines: state => state.products.medicines,
         searchFilter: state => state.filter.search
       }),
+      // ...mapGetters({
+      //   allMedicines: 'getAllMedicines'
+      // }),
       filteredList(){
         return this.allMedicines.filter(medicine => {
           return medicine.name.toLowerCase().includes(this.searchFilter.toLowerCase());
@@ -30,7 +33,6 @@ export default {
       }
     },
     created() {
-        this.$store.dispatch('getAllMedicines', 'createdAt');
         this.$store.dispatch('clearFilter');
     }
 }
