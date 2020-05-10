@@ -35,42 +35,42 @@ export const getLabels = () => {
     return labels;
 };
 
-export const getInputOptions = (details) => {
+export const getInputOptions = (product) => {
     const options = [
         {
             label: "name",
-            value: details.name,
+            value: product.name,
             titleStyle: true,
             class: "item-title-container",
             type: 'text'
         },
         {
             label: "brand",
-            value: details.brand,
+            value: product.brand,
             class: "input-group",
             type: 'text'
         },
         {
             label: "dosage",
-            value: details.dosage,
+            value: product.dosage,
             class: "input-group",
             type: 'text'
         },
         {
             label: "type",
-            value: details.type,
+            value: product.type,
             class: "input-group",
             type: 'text'
         },
         {
             label: "stock",
-            value: details.stock,
+            value: product.stock,
             class: "input-group",
             type: 'number'
         },
         {
             label: "price",
-            value: details.price,
+            value: product.price,
             class: "input-group",
             type: 'number'
         }

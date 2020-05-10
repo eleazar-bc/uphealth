@@ -77,6 +77,8 @@ export default {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0 1em;
+  max-height: 75vh;
+  overflow: auto;
 }
 
 @media (max-width: 768px) {

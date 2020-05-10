@@ -32,7 +32,7 @@ const actions = {
 
     addItem: ({commit}, newItem) => {
         const id = firestoreIdGenerator();
-        newItem.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        newItem.createdAt = new Date();
         db.collection('products').doc(id).set(newItem);
         newItem.id = id;
         commit('addItem', newItem);

@@ -26,6 +26,7 @@ const actions = {
     },
     updateSales: ({commit}, cart) => {
         cart.forEach(item => {
+            item.createdAt = new Date();
             const itemRef = db.collection('transactions').doc(item.id);
             db.runTransaction(transaction => {
                 return transaction.get(itemRef).then(doc => {
@@ -42,6 +43,10 @@ const actions = {
             })
             commit('updateSales', item);
         });
+    },
+    deleteSales: ({commit}, id) => {
+        db.collection('transactions').doc(id).delete();
+        commit('deleteSales', id);
     }
 };
 
@@ -52,9 +57,10 @@ const mutations = {
         if(sale){
             sale.quantity = sale.quantity + item.quantity;
         } else {
-            state.sale = item;
+            state.sales.unshift(item);
         }
-    }
+    },
+    deleteSales: (state, id) => state.sales = state.sales.filter(item => item.id !== id)
 };
 
 function combineItems(sales) {

@@ -33,6 +33,8 @@ export default {
 
 .main-content {
   padding: 1em;
+  max-height: 75vh;
+  overflow: auto;
 }
 
 .content-title {

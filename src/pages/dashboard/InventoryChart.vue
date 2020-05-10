@@ -1,7 +1,7 @@
 <template>
     <div>
-        <BarChart :chartData="stocksData" :options="options" />
-        <BarChart :chartData="salesData" :options="options" />
+        <BarChart :chartData="stocksChartData" :options="chartOptions" />
+        <BarChart :chartData="salesChartData" :options="chartOptions" />
     </div>
 </template>
 
@@ -18,46 +18,32 @@ export default {
         ...mapState({
             allMedicines: state => state.products.medicines,
             transactions: state => state.transactions.sales
-        })
-    },
-    data() {
-        return {
-            stocksData: {},
-            salesData: {},
-            options: {}
-        };
-    },
-    created() {
-        // this.$store.dispatch("getAllMedicines");
-        // this.$store.dispatch("getAllSales");
-    },
-    mounted() {
-        this.stocksChartData();
-        this.salesChartData();
-        this.chartOptions();
+        }),
+        stocksChartData() {
+            return this.populateStocksData();
+        },
+        salesChartData() {
+            return this.populateSalesData();
+        },
+        chartOptions() {
+            return this.defineChartOptions();
+        }
     },
     methods: {
-        stocksChartData() {
-            this.stocksData = {
+        populateStocksData() {
+            return {
                 labels: this.allMedicines.map(med => med.name),
                 datasets: [
                     {
                         label: "Available Stock",
                         backgroundColor: "#3b86ff",
                         data: this.allMedicines.map(med => parseInt(med.stock))
-                    },
-                    {
-                        label: "Sold",
-                        backgroundColor: "#69e4a6",
-                        data: this.transactions.map(transaction =>
-                            parseInt(transaction.quantity)
-                        )
                     }
                 ]
             };
         },
-        salesChartData() {
-            this.salesData = {
+        populateSalesData() {
+            return {
                 labels: this.transactions.map(transaction => transaction.name),
                 datasets: [
                     {
@@ -70,8 +56,8 @@ export default {
                 ]
             };
         },
-        chartOptions() {
-            this.options = {
+        defineChartOptions() {
+            return {
                 responsive: true,
                 maintainAspectRatio: false,
                 ticks: {
@@ -81,12 +67,6 @@ export default {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            // display: true,
-                            // minRotation: 1,
-                            // maxRotation: 1,
-                            // min: 1,
-                            // max: 100,
-                            // maxTicksLimit: 10
                         }
                     }]
                 }
