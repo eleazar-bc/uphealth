@@ -8,7 +8,7 @@
 <script>
 import {mapActions, mapGetters} from 'vuex';
 export default {
-    name: 'Search',
+    name: 'TheSearchBar',
     methods: {
       ...mapActions(['updateFilter'])
     },

@@ -14,18 +14,15 @@
 
 <script>
 import {mapState} from 'vuex';
-import ProductItem from '../ProductItem.vue';
+import ProductItem from './ProductItem.vue';
 export default {
-    name: 'MainContent',
+    name: 'HomeContent',
     components: {ProductItem},
     computed: {
       ...mapState({
         allMedicines: state => state.products.medicines,
         searchFilter: state => state.filter.search
       }),
-      // ...mapGetters({
-      //   allMedicines: 'getAllMedicines'
-      // }),
       filteredList(){
         return this.allMedicines.filter(medicine => {
           return medicine.name.toLowerCase().includes(this.searchFilter.toLowerCase());

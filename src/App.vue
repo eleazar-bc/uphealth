@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import TheSidebar from "./components/layout/TheSidebar.vue";
-import TheHeader from "./components/layout/TheHeader.vue";
+import TheSidebar from "./layout/TheSidebar.vue";
+import TheHeader from "./layout/TheHeader.vue";
 
 import "animate.css";
 

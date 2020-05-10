@@ -12,8 +12,8 @@
 
 <script>
 import {mapState} from 'vuex';
-import AddItem from '../components/AddItem';
-import InventoryItem from '../components/InventoryItem';
+import AddItem from '../pages/inventory/AddItem';
+import InventoryItem from '../pages/inventory/InventoryItem';
 
 export default {
     name: "Inventory",

@@ -1,19 +1,16 @@
 <template>
     <div>
         <InventoryChart />
-        <!-- <SalesChart /> -->
     </div>
 </template>
 
 <script>
-import InventoryChart from "../components/charts/InventoryChart";
-// import SalesChart from "../components/charts/SalesChart";
+import InventoryChart from "../pages/dashboard/InventoryChart";
 
 export default {
     name: "Dashboard",
     components: {
-        InventoryChart,
-        // SalesChart
+        InventoryChart
     }
 };
 </script>

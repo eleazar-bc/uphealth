@@ -1,17 +1,17 @@
 <template>
     <nav class="main-nav">
         <ul>
-            <MenuItem v-for="menu in menus" v-bind:key="menu.title" v-bind:menu="menu" />
+            <NavigationItem v-for="menu in menus" v-bind:key="menu.title" v-bind:menu="menu" />
         </ul>
     </nav>
 </template>
 
 <script>
-import MenuItem from '../MenuItem.vue';
+import NavigationItem from '../components/NavigationItem.vue';
 
 export default {
     name: 'Navigation',
-    components: {MenuItem},
+    components: {NavigationItem},
     data() {
     return {
       menus: [

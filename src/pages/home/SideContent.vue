@@ -1,9 +1,12 @@
 <template>
 <div class="side-content">
-    <Total v-bind:content="cartTotal" />
+    <CartTotal v-bind:content="cartTotal" />
+
     <div class="main-content container">
       <div class="content-title">Current Orders</div>
+
       <CartItem v-for="product in cartItems" v-bind:key="product.id" v-bind:product="product"/>
+
       <div v-if="cartItems.length == 0" class="empty-container">
         <p class="empty-message">Click <img src="images/Card Icon 1.png" alt=""> to add items.</p>
       </div>
@@ -13,12 +16,12 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import CartItem from '../CartItem.vue';
-import Total from '../Total.vue';
+import CartItem from './CartItem.vue';
+import CartTotal from './CartTotal';
 
 export default {
     name: 'SideContent',
-    components: {CartItem, Total},
+    components: {CartItem, CartTotal},
     computed: mapGetters(['cartItems', 'cartTotal'])
 }
 </script>
