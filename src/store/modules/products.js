@@ -7,10 +7,14 @@ const state = {
     medicines: []
 };
 
-const getters = {};
+const getters = {
+    getAllMedicines: () => {
+        return state.medicines;
+    }
+};
 
 const actions = {
-    getAllMedicines: ({commit}, payload = 'createdAt') => {
+    setMedicines: ({commit}, payload = 'createdAt') => {
         /** For offline testing */
         // dummyMedicines.getAllMedicines((medicines) => commit('setMedicines', medicines));
 

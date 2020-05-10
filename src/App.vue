@@ -20,6 +20,9 @@ export default {
     components: {
         TheSidebar,
         TheHeader
+    },
+    created() {
+        this.$store.dispatch('setMedicines', 'createdAt');
     }
 };
 </script>

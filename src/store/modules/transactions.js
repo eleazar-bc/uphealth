@@ -46,8 +46,12 @@ const actions = {
 const mutations = {
     setSales: (state, sales) => state.sales = combineItems(sales),
     updateSales: (state, item) => {
-        const index = state.sales.findIndex(sale => sale.id === item.id);
-        state.sales[index].quantity = state.sales[index].quantity + item.quantity;
+        const sale = state.sales.find(sale => sale.id === item.id);
+        if(sale){
+            sale.quantity = sale.quantity + item.quantity;
+        } else {
+            state.sale = item;
+        }
     }
 };
 
