@@ -1,5 +1,5 @@
 // import firebase from 'firebase/app';
-import {db} from '../../db';
+import {db} from '../../utils/db';
 
 const state = {
     sales: [

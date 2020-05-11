@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import {db} from '../../db';
+import {db} from '../../utils/db';
 import {firestoreIdGenerator} from '../../utils/firestoreIdGenerator';
 // import dummyMedicines from '../../api/medicines';
 
