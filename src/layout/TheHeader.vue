@@ -34,7 +34,7 @@ export default {
 }
 @media (max-width: 768px) {
     .header-container {
-        width: 90vw;
+        width: 84vw;
     }
 }
 </style>

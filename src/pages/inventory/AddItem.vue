@@ -1,13 +1,16 @@
 <template>
     <div class="add-item-container container">
-        <div @click="showInputGroup = !showInputGroup; clearMessage()" class="title-container">
+        <div 
+            @click="showInputGroup = !showInputGroup; clearMessage(); focusOnInput()" 
+            class="title-container"
+        >
             <div class="title">Add new product</div>
             <div class="showHide">
                 <img v-if="showInputGroup" src="images/icon_up-arrow-small.png" alt />
                 <img v-if="!showInputGroup" src="images/small-down.png" alt />
             </div>
         </div>
-        <div v-if="showInputGroup" class="input-group animated fadeIn">
+        <div v-show="showInputGroup" class="input-group animated fadeIn" ref="inputgroup">
             <input
                 v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                 class="new-input"
@@ -26,7 +29,7 @@
                     </p>
                 </div>
                 <div class="action-buttons">
-                    <div v-if="isNameValid" @click="onSave" class="button">Save</div>
+                    <div tabindex="0" v-if="isNameValid" v-on:keyup.enter="onSave" @click="onSave" class="button">Save</div>
                 </div>
             </div>
         </div>
@@ -62,6 +65,13 @@ export default {
         },
         clearMessage() {
             this.status.text = "";
+        },
+        focusOnInput() {
+            if(this.showInputGroup) {
+                this.$nextTick(() => {
+                    this.$refs['inputgroup'].firstElementChild.focus();
+                });
+            }
         }
     },
     computed: {

@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Inventory from '../views/Inventory'
 import Dashboard from '../views/Dashboard'
-import Costumers from '../views/Costumers.vue'
 
 Vue.use(VueRouter)
 
@@ -27,11 +26,6 @@ Vue.use(VueRouter)
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
-  },
-  {
-    path: '/costumers',
-    name: 'Costumers',
-    component: Costumers
   }
 ]
 

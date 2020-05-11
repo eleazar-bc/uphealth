@@ -36,9 +36,9 @@ export default {
           src:'images/icon_invoices.png'
         },
         {
-          title: 'Costumers',
-          url: '/costumers',
-          src:'images/icon_customers.png'
+          title: 'Activities',
+          url: '/activities',
+          src:'images/icon_calendar.png'
         },
         {
           title: 'Settings',
