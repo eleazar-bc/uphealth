@@ -1,6 +1,4 @@
-import firebase from 'firebase/app';
-import {db} from '../../utils/db';
-import {firestoreIdGenerator} from '../../utils/firestoreIdGenerator';
+import {firestoreDb} from '../../utils/db';
 
 const state = {
     medicines: [
@@ -16,74 +14,39 @@ const getters = {
 
 const actions = {
     setMedicines: ({commit}, payload = 'createdAt') => {
-        db.collection('products').orderBy(payload)
-        .get()
-        .then(querySnapshot => {
-            const documents = querySnapshot.docs.map(doc => {
-                return {id: doc.id, ...doc.data()}
-            });
-            commit('SET_MEDICINES', documents)
+        firestoreDb.getDocuments('products', payload).then(documents => {
+            commit('SET_MEDICINES', documents);
         });
 
-        db.collection('transactions')
-        .get()
-        .then(querySnapshot => {
-            const document = querySnapshot.docs.map(doc => doc.data().sales);
-
-            if(document.length > 0) {               
-                const combined = combineQuantity(document);
-                commit('INCREMENT_SALES_QUANTITY', combined);
-            }
+        firestoreDb.retrieveTransactions().then(documents => {
+            commit('INCREMENT_SALES_QUANTITY', documents);
         });
     },
 
     addItem: ({commit}, newItem) => {
-        const id = firestoreIdGenerator();
-        newItem.createdAt = new Date();
-        db.collection('products').doc(id).set(newItem);
-        newItem.id = id;
-        commit('ADD_ITEM', newItem);
+        const document = firestoreDb.addDocument('products', newItem);
+        commit('ADD_ITEM', document);
     },
 
     updateItem: ({commit}, item) => {
-        db.collection('products').doc(item.id).set(item);
+        firestoreDb.updateDocument('products', item);
         commit('UPDATE_ITEM', item);
     },
     deleteItem: ({commit}, id) => {
-        db.collection('products').doc(id).delete();
-        db.collection('transactions').doc(id).delete();
+        const deleteFrom = ['products', 'transactions'];
+        firestoreDb.deleteRecords(deleteFrom, id);
         commit('DELETE_ITEM', id);
     },
     
     checkout: ({commit}, cart) => {
         cart.forEach(item => {
-            db.collection('products').doc(item.id).update({
-                stock: firebase.firestore.FieldValue.increment(parseInt(-item.quantity))
-            });
+            firestoreDb.decrementQuantity('products', item);
             commit('DECREMENT_INVENTORY', item);
         });
     },
 
     updateSales: ({commit}, cart) => {
-        cart.forEach(item => {
-            const {id, name, price, quantity} = item;
-            const createdAt = new Date();
-            const itemRef = db.collection('transactions').doc(item.id);
-            db.runTransaction(transaction => {
-                return transaction.get(itemRef).then(doc => {
-                    if (!doc.data()) {
-                        transaction.set(itemRef, {
-                            sales: [{id, name, createdAt, price, quantity}]
-                        });
-                    } else {
-                        const itemSales = doc.data().sales;
-                        itemSales.push({id, name, createdAt, price, quantity});
-                        transaction.update(itemRef, { sales: itemSales });
-                    }
-                });
-            })
-        });
-
+        firestoreDb.addTransaction(cart);
         commit('INCREMENT_SALES_QUANTITY', cart);
     }
 };
@@ -110,23 +73,6 @@ const mutations = {
             }
         });
     },
-}
-
-function combineQuantity(sales) {
-    let result = [];
-    sales.forEach(transaction => {
-        result.push(sumQuantity(transaction));
-    });
-    return result;
-}
-
-function sumQuantity(salesArray) {
-    return salesArray.reduce((current, next) => ({
-        id: next.id,
-        name: next.name,
-        price: next.price,
-        quantity: current.quantity + next.quantity
-    }));
 }
 
 export default {
