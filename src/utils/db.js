@@ -41,7 +41,7 @@ export const firestoreDb = {
     });
   },
 
-  retrieveTransactions: () => {
+  retrieveCombinedTransactions: () => {
     return db.collection('transactions')
       .get()
       .then(querySnapshot => {

@@ -18,7 +18,7 @@ const actions = {
             commit('SET_MEDICINES', documents);
         });
 
-        firestoreDb.retrieveTransactions().then(documents => {
+        firestoreDb.retrieveCombinedTransactions().then(documents => {
             commit('INCREMENT_SALES_QUANTITY', documents);
         });
     },

@@ -100,6 +100,10 @@ html body .background-orange {
     width: 80vw;
 }
 
+.main-container .component-container {
+    margin: 1em;
+}
+
 @media (max-width: 1024px) {
     .component-container {
         margin: 1em;

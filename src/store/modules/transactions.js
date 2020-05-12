@@ -1,21 +1,28 @@
-// import firebase from 'firebase/app';
-// import {db} from '../../utils/db';
+// import {firestoreDb} from '../../utils/db';
 
-const state = {
-    sales: []
-}
+// const state = {
+//     sales: []
+// }
 
-const getters = {};
+// const getters = {};
 
-const actions = {
-    
-};
+// const actions = {
+//     setSales: (allMedicines) => {
+//         commit('SET_SALES', allMedicines);
+//         firestoreDb.retrieveCombinedTransactions().then(documents => {
+//             commit('INCREMENT_SALES_QUANTITY', documents);
+//         });
+//     }
+// };
 
-const mutations = {};
+// const mutations = {
+//     SET_SALES: (state, sales) => state.sales = sales,
+//     INCREMENT_SALES_QUANTITY: (state, items) => 
+// };
 
-export default {
-    state,
-    getters,
-    actions,
-    mutations
-}
+// export default {
+//     state,
+//     getters,
+//     actions,
+//     mutations
+// }
