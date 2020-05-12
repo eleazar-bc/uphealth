@@ -1,7 +1,6 @@
 <template>
     <div>
         <BarChart :chartData="stocksChartData" :options="chartOptions" />
-        <BarChart :chartData="salesChartData" :options="chartOptions" />
     </div>
 </template>
 
@@ -16,14 +15,10 @@ export default {
     },
     computed: {
         ...mapState({
-            allMedicines: state => state.products.medicines,
-            transactions: state => state.transactions.sales
+            allTransactions: state => state.transactions.sales
         }),
         stocksChartData() {
             return this.populateStocksData();
-        },
-        salesChartData() {
-            return this.populateSalesData();
         },
         chartOptions() {
             return this.defineChartOptions();
@@ -32,24 +27,17 @@ export default {
     methods: {
         populateStocksData() {
             return {
-                labels: this.allMedicines.map(med => med.name),
+                labels: this.allTransactions.map(med => med.name),
                 datasets: [
                     {
                         label: "Available Stock",
                         backgroundColor: "#3b86ff",
-                        data: this.allMedicines.map(med => parseInt(med.stock))
-                    }
-                ]
-            };
-        },
-        populateSalesData() {
-            return {
-                labels: this.transactions.map(transaction => transaction.name),
-                datasets: [
+                        data: this.allTransactions.map(med => parseInt(med.stock))
+                    },
                     {
                         label: "Sold",
                         backgroundColor: "#69e4a6",
-                        data: this.transactions.map(transaction =>
+                        data: this.allTransactions.map(transaction =>
                             parseInt(transaction.quantity)
                         )
                     }

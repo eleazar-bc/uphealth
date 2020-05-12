@@ -12,17 +12,28 @@ const getters = {
 };
 
 const actions = {
-    setAllSales: ({commit}) => {
+    setAllSales: ({commit}, payload) => {
+        db.collection('products').orderBy(payload)
+        .get()
+        .then(querySnapshot => {
+            const documents = querySnapshot.docs.map(doc => {
+                return {id: doc.id, ...doc.data()}
+            });
+            commit('SET_SALES', documents);
+        });
+
         db.collection('transactions')
         .get()
         .then(querySnapshot => {
-            const sales = querySnapshot.docs.map(doc => {
-                const result = doc.data();
-                result.id = doc.id
-                return result;
-            });
-            commit('setSales', sales);
-        })
+            const document = querySnapshot.docs.map(doc => doc.data().sales);
+
+            if(document.length > 0) {               
+                const combined = combineQuantity(document);
+                commit('INCREMENT_QUANTITY', combined);
+            }
+        });
+        console.log('---------- ---------- ----------');
+        console.log(state.sales);
     },
     updateSales: ({commit}, cart) => {
         cart.forEach(item => {
@@ -42,32 +53,34 @@ const actions = {
                     }
                 });
             })
-            commit('updateSales', item);
         });
+        commit('INCREMENT_QUANTITY', cart);
     },
     deleteSales: ({commit}, id) => {
         db.collection('transactions').doc(id).delete();
-        commit('deleteSales', id);
+        commit('DELETE_SALES', id);
     }
 };
 
 const mutations = {
-    setSales: (state, sales) => state.sales = combineItems(sales),
-    updateSales: (state, item) => {
-        const sale = state.sales.find(sale => sale.id === item.id);
-        if(sale){
-            sale.quantity = sale.quantity + item.quantity;
-        } else {
-            state.sales.unshift(item);
-        }
+    SET_SALES: (state, sales) => state.sales = sales,
+    INCREMENT_QUANTITY: (state, items) => {
+        items.forEach(item => {
+            const stateItem = state.sales.find(med => med.id == item.id);
+            if(stateItem.quantity){
+                stateItem.quantity = stateItem.quantity + item.quantity;
+            } else {
+                stateItem.quantity = item.quantity;
+            }
+        });
     },
-    deleteSales: (state, id) => state.sales = state.sales.filter(item => item.id !== id)
+    DELETE_SALES: (state, id) => state.sales = state.sales.filter(item => item.id !== id)
 };
 
-function combineItems(sales) {
+function combineQuantity(sales) {
     let result = [];
     sales.forEach(transaction => {
-        result.push(sumQuantity(transaction.sales));
+        result.push(sumQuantity(transaction));
     });
     return result;
 }

@@ -23,7 +23,7 @@ export default {
     },
     created() {
         this.$store.dispatch('setMedicines', 'name');
-        this.$store.dispatch("setAllSales");
+        this.$store.dispatch('setAllSales', 'name');
     }
 };
 </script>
