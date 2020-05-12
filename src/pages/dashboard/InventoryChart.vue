@@ -15,35 +15,32 @@ export default {
     },
     computed: {
         ...mapState({
-            allTransactions: state => state.transactions.sales
+            allMedicines: state => state.products.medicines,
         }),
         stocksChartData() {
-            return this.populateStocksData();
-        },
-        chartOptions() {
-            return this.defineChartOptions();
-        }
-    },
-    methods: {
-        populateStocksData() {
             return {
-                labels: this.allTransactions.map(med => med.name),
+                labels: this.allMedicines.map(med => med.name),
                 datasets: [
                     {
                         label: "Available Stock",
                         backgroundColor: "#3b86ff",
-                        data: this.allTransactions.map(med => parseInt(med.stock))
+                        data: this.allMedicines.map(med => parseInt(med.stock))
                     },
                     {
                         label: "Sold",
                         backgroundColor: "#69e4a6",
-                        data: this.allTransactions.map(transaction =>
+                        data: this.allMedicines.map(transaction =>
                             parseInt(transaction.quantity)
                         )
                     }
                 ]
             };
         },
+        chartOptions() {
+            return this.defineChartOptions();
+        }
+    },
+    methods: {
         defineChartOptions() {
             return {
                 responsive: true,

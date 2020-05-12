@@ -37,7 +37,7 @@ export default {
     components: { EditableInput },
     props: ["product"],
     methods: {
-        ...mapActions(["deleteItem", "updateItem", "deleteSales"]),
+        ...mapActions(["deleteItem", "updateItem"]),
         handleUpdate({label, value}) {
             this.showSaveButton = true;
             this.showSaveMessage = false;
@@ -57,7 +57,6 @@ export default {
             if (confirm("Are you sure?")) {
                 this.animateMe = true;
                 this.deleteItem(this.product.id);
-                this.deleteSales(this.product.id);
             }
         }
     },
