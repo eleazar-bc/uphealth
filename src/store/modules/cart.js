@@ -12,8 +12,7 @@ const getters = {
                 id: item.id,
                 name: item.name,
                 price: item.price,
-                quantity,
-                total: item.price * quantity
+                quantity
             }
         });
     },
@@ -32,44 +31,44 @@ const actions = {
 
         const inCart = state.items.find(item => item.id === orderItem.id);
         if(!inCart) {
-            commit('addToCart', orderItem);
+            commit('ADD_TO_CART', orderItem);
         } else {
 
             if(parseInt(orderItem.stock) === parseInt(inCart.quantity)) {
                 return;
             }
 
-            commit('incrementItem', orderItem);
+            commit('INCREMENT_ITEM', orderItem);
         }
     },
     removeFromCart: ({commit}, orderItem) => {
         const cartItem = state.items.find(item => item.id === orderItem.id);
         if(cartItem.quantity > 1) {
-            commit('decrementItem', orderItem);
+            commit('DECREMENT_ITEM', orderItem);
         } else {
-            commit('removeFromCart', orderItem);
+            commit('REMOVE_FROM_CART', orderItem);
         }
     },
     clearCart: ({commit}) => {
-        commit('clearCart');
+        commit('CLEAR_CART');
     }
 };
 
 const mutations = {
-    addToCart: (state, {id}) => state.items.unshift({
+    ADD_TO_CART: (state, {id}) => state.items.unshift({
         id,
         quantity: 1
     }),
-    incrementItem: (state, {id}) => {
+    INCREMENT_ITEM: (state, {id}) => {
         const cartItem = state.items.find(item => item.id === id);
         cartItem.quantity++;
     },
-    removeFromCart: (state, {id}) => state.items = state.items.filter(item => item.id != id),
-    decrementItem: (state, {id}) => {
+    REMOVE_FROM_CART: (state, {id}) => state.items = state.items.filter(item => item.id != id),
+    DECREMENT_ITEM: (state, {id}) => {
         const cartItem = state.items.find(item => item.id === id);
         cartItem.quantity--;
     },
-    clearCart: (state) => state.items = []
+    CLEAR_CART: (state) => state.items = []
 };
 
 export default {

@@ -7,13 +7,13 @@ const getters = {
 };
 
 const actions = {
-    updateFilter: ({commit}, search) => commit('updateFilter', search),
-    clearFilter: ({commit}) => commit('clearFilter')
+    updateFilter: ({commit}, search) => commit('UPDATE_FILTER', search),
+    clearFilter: ({commit}) => commit('CLEAR_FILTER')
 };
 
 const mutations = {
-    updateFilter: (state, search) => state.search = search,
-    clearFilter: (state) => state.search = ''
+    UPDATE_FILTER: (state, search) => state.search = search,
+    CLEAR_FILTER: (state) => state.search = ''
 };
 
 export default {
