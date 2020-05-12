@@ -12,8 +12,7 @@ const getters = {
                 id: item.id,
                 name: item.name,
                 price: item.price,
-                quantity,
-                total: item.price * quantity
+                quantity
             }
         });
     },

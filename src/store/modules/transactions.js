@@ -3,7 +3,7 @@ import {db} from '../../utils/db';
 
 const state = {
     sales: [
-        // {id, name, price, quantity, total}
+        // {id, name, price, quantity, createdAt}
     ]
 }
 
@@ -26,17 +26,18 @@ const actions = {
     },
     updateSales: ({commit}, cart) => {
         cart.forEach(item => {
-            item.createdAt = new Date();
+            const {id, name, price, quantity} = item;
+            const createdAt = new Date();
             const itemRef = db.collection('transactions').doc(item.id);
             db.runTransaction(transaction => {
                 return transaction.get(itemRef).then(doc => {
                     if (!doc.data()) {
                         transaction.set(itemRef, {
-                            sales: [item]
+                            sales: [{id, name, createdAt, price, quantity}]
                         });
                     } else {
                         const itemSales = doc.data().sales;
-                        itemSales.push(item);
+                        itemSales.push({id, name, createdAt, price, quantity});
                         transaction.update(itemRef, { sales: itemSales });
                     }
                 });

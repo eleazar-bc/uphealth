@@ -4,7 +4,9 @@ import {firestoreIdGenerator} from '../../utils/firestoreIdGenerator';
 // import dummyMedicines from '../../api/medicines';
 
 const state = {
-    medicines: []
+    medicines: [
+        // {id, name, createdAt, brand, dosage, type, stock, price}
+    ]
 };
 
 const getters = {

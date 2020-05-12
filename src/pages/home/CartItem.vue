@@ -9,7 +9,7 @@
         >Quantity: {{product.quantity}}</span>
     </div>
 
-    <div class="item-value">&#8369; {{product.total}}</div>
+    <div class="item-value">&#8369; {{product.price * product.quantity}}</div>
     
     <div @click="removeFromCart(product), animate=true" class="remove-button-container">
       <img class="remove-button" src="images/close.png" alt="">
