@@ -101,7 +101,7 @@ html body .background-orange {
 }
 
 .main-container .component-container {
-    margin: 1em 1vw;
+    margin: 1em;
 }
 
 @media (max-width: 1024px) {
