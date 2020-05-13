@@ -13,23 +13,35 @@ export default {
     components: {
         BarChart
     },
+    watch: {
+        allMedicines: {
+            handler: function(val) {
+                if(val.length > 0){
+                    this.$store.dispatch('setSales', val);
+                }
+            }
+        }
+    },
     computed: {
         ...mapState({
             allMedicines: state => state.products.medicines,
+            allTransactions: state => state.transactions.sales
         }),
         stocksChartData() {
             return {
-                labels: this.allMedicines.map(med => med.name),
+                labels: this.allTransactions.map(med => med.name),
                 datasets: [
                     {
                         label: "Available Stock",
                         backgroundColor: "#3b86ff",
-                        data: this.allMedicines.map(med => parseInt(med.stock))
+                        data: this.allTransactions.map(med =>
+                            parseInt(med.stock)
+                        )
                     },
                     {
                         label: "Sold",
                         backgroundColor: "#69e4a6",
-                        data: this.allMedicines.map(transaction =>
+                        data: this.allTransactions.map(transaction =>
                             parseInt(transaction.quantity)
                         )
                     }
@@ -49,11 +61,13 @@ export default {
                     min: 5
                 },
                 scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
+                    yAxes: [
+                        {
+                            ticks: {
+                                beginAtZero: true
+                            }
                         }
-                    }]
+                    ]
                 }
             };
         }

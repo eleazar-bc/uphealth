@@ -29,10 +29,8 @@ export const firestoreDb = {
     db.collection(collection).doc(item.id).set(item);
   },
 
-  deleteRecords: (collections, id) => {
-    collections.forEach(collection => {
-      db.collection(collection).doc(id).delete();
-    });
+  deleteRecords: (collection, id) => {
+    db.collection(collection).doc(id).delete();
   },
 
   decrementQuantity: (collection, item) => {

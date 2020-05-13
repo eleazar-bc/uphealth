@@ -7,19 +7,13 @@ const state = {
 };
 
 const getters = {
-    getAllMedicines: () => {
-        return state.medicines;
-    }
+    getAllMedicines: state => state.medicines
 };
 
 const actions = {
     setMedicines: ({commit}, payload = 'createdAt') => {
         firestoreDb.getDocuments('products', payload).then(documents => {
             commit('SET_MEDICINES', documents);
-        });
-
-        firestoreDb.retrieveCombinedTransactions().then(documents => {
-            commit('INCREMENT_SALES_QUANTITY', documents);
         });
     },
 
@@ -33,8 +27,7 @@ const actions = {
         commit('UPDATE_ITEM', item);
     },
     deleteItem: ({commit}, id) => {
-        const deleteFrom = ['products', 'transactions'];
-        firestoreDb.deleteRecords(deleteFrom, id);
+        firestoreDb.deleteRecords('products', id);
         commit('DELETE_ITEM', id);
     },
     
@@ -43,11 +36,6 @@ const actions = {
             firestoreDb.decrementQuantity('products', item);
             commit('DECREMENT_INVENTORY', item);
         });
-    },
-
-    updateSales: ({commit}, cart) => {
-        firestoreDb.addTransaction(cart);
-        commit('INCREMENT_SALES_QUANTITY', cart);
     }
 };
 
@@ -62,17 +50,7 @@ const mutations = {
     DECREMENT_INVENTORY: (state, item) => {
         const stateItem = state.medicines.find(medicine => medicine.id === item.id);
         stateItem.stock = stateItem.stock - item.quantity;
-    },
-    INCREMENT_SALES_QUANTITY: (state, items) => {
-        items.forEach(item => {
-            const stateItem = state.medicines.find(med => med.id == item.id);
-            if(stateItem.quantity){
-                stateItem.quantity = stateItem.quantity + item.quantity;
-            } else {
-                stateItem.quantity = item.quantity;
-            }
-        });
-    },
+    }
 }
 
 export default {

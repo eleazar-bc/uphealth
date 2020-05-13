@@ -52,5 +52,8 @@ export default {
 </script>
 
 <style>
-
+.main-nav {
+  position: sticky;
+  top: 0;
+}
 </style>
