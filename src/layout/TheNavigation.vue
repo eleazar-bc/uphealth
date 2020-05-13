@@ -33,7 +33,7 @@ export default {
         {
           title: 'Invoice',
           url: '/invoice',
-          src:'images/icon_invoices.png'
+          src:'images/icon_invoice.png'
         },
         {
           title: 'Activities',
