@@ -16,9 +16,7 @@ export default {
     watch: {
         allMedicines: {
             handler: function(val) {
-                if(val.length > 0){
-                    this.$store.dispatch('setSales', val);
-                }
+                this.$store.dispatch("setSales", val);
             }
         }
     },
@@ -28,6 +26,14 @@ export default {
             allTransactions: state => state.transactions.sales
         }),
         stocksChartData() {
+            return this.populateChartData();
+        },
+        chartOptions() {
+            return this.defineChartOptions();
+        }
+    },
+    methods: {
+        populateChartData() {
             return {
                 labels: this.allTransactions.map(med => med.name),
                 datasets: [
@@ -48,11 +54,6 @@ export default {
                 ]
             };
         },
-        chartOptions() {
-            return this.defineChartOptions();
-        }
-    },
-    methods: {
         defineChartOptions() {
             return {
                 responsive: true,
