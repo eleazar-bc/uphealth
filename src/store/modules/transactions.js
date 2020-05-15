@@ -10,7 +10,6 @@ const getters = {
 
 const actions = {
     setSales: ({commit}, allMedicines) => {
-        console.log('---------- for some reason, i need this console log ----------');
         commit('SET_SALES', allMedicines);        
         firestoreDb.retrieveCombinedTransactions().then(documents => {      
             commit('INCREMENT_SALES_QUANTITY', documents);
