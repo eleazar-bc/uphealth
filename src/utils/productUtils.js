@@ -35,46 +35,46 @@ export const getLabels = () => {
     return labels;
 };
 
-export const getInputOptions = (product) => {
+export const getInputOptions = product => {
     const options = [
         {
-            label: "name",
+            label: 'name',
             value: product.name,
             titleStyle: true,
-            class: "item-title-container",
+            class: 'item-title-container',
             type: 'text'
         },
         {
-            label: "brand",
+            label: 'brand',
             value: product.brand,
-            class: "input-group",
+            class: 'input-group',
             type: 'text'
         },
         {
-            label: "dosage",
+            label: 'dosage',
             value: product.dosage,
-            class: "input-group",
+            class: 'input-group',
             type: 'text'
         },
         {
-            label: "type",
+            label: 'type',
             value: product.type,
-            class: "input-group",
+            class: 'input-group',
             type: 'text'
         },
         {
-            label: "stock",
+            label: 'stock',
             value: product.stock,
-            class: "input-group",
+            class: 'input-group',
             type: 'number'
         },
         {
-            label: "price",
+            label: 'price',
             value: product.price,
-            class: "input-group",
+            class: 'input-group',
             type: 'number'
         }
     ];
 
     return options;
-}
+};

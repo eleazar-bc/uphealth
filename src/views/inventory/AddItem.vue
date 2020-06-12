@@ -1,7 +1,7 @@
 <template>
     <div class="add-item-container container">
-        <div 
-            @click="showInputGroup = !showInputGroup; clearMessage(); focusOnInput()" 
+        <div
+            @click="showInputGroup = !showInputGroup; clearMessage(); focusOnInput()"
             class="title-container"
         >
             <div class="title">Add new product</div>
@@ -29,7 +29,13 @@
                     </p>
                 </div>
                 <div class="action-buttons">
-                    <div tabindex="0" v-if="isNameValid" v-on:keyup.enter="onSave" @click="onSave" class="button">Save</div>
+                    <div
+                        tabindex="0"
+                        v-if="isNameValid"
+                        v-on:keyup.enter="onSave"
+                        @click="onSave"
+                        class="button"
+                    >Save</div>
                 </div>
             </div>
         </div>
@@ -38,7 +44,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import { getLabels } from '../../utils/productUtils';
+import { getLabels } from "../../utils/productUtils";
 
 export default {
     name: "AddItem",
@@ -49,15 +55,19 @@ export default {
             labels: getLabels(),
             status: {
                 text: "no action",
-                latest:  ''
+                latest: ""
             }
         };
     },
     methods: {
         ...mapActions(["addItem"]),
         onSave() {
-            this.newItem.stock = (this.newItem.stock  ? parseInt(this.newItem.stock) : 0);
-            this.newItem.price= (this.newItem.price ? parseInt(this.newItem.price) : 0);
+            this.newItem.stock = this.newItem.stock
+                ? parseInt(this.newItem.stock)
+                : 0;
+            this.newItem.price = this.newItem.price
+                ? parseInt(this.newItem.price)
+                : 0;
             this.addItem(this.newItem);
             this.status.latest = this.newItem.name;
             this.newItem = {};
@@ -67,16 +77,18 @@ export default {
             this.status.text = "";
         },
         focusOnInput() {
-            if(this.showInputGroup) {
+            if (this.showInputGroup) {
                 this.$nextTick(() => {
-                    this.$refs['inputgroup'].firstElementChild.focus();
+                    this.$refs["inputgroup"].firstElementChild.focus();
                 });
             }
         }
     },
     computed: {
         isNameValid() {
-            return this.newItem.name != undefined && this.newItem.name.length > 0;
+            return (
+                this.newItem.name != undefined && this.newItem.name.length > 0
+            );
         }
     }
 };

@@ -9,20 +9,20 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex';
+import { mapActions, mapGetters } from "vuex";
 export default {
-    name: 'CartMenu',
+    name: "CartMenu",
     methods: {
-        ...mapActions(['clearCart', 'checkout', 'updateSales']),
+        ...mapActions(["clearCart", "checkout", "updateSales"]),
         handleCheckout() {
-            if(confirm('Done with this transaction?')) {
+            if (confirm("Done with this transaction?")) {
                 this.checkout(this.cartItems);
                 this.updateSales(this.cartItems);
                 this.clearCart();
             }
         }
     },
-    computed: mapGetters(['cartItems'])
+    computed: mapGetters(["cartItems"])
 };
 </script>
 
@@ -40,11 +40,11 @@ ul li {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #F1F1F3;
+    border-bottom: 1px solid #f1f1f3;
 }
 ul li:hover {
     cursor: pointer;
-    background-color: #F0F0F7;
+    background-color: #f0f0f7;
 }
 .showDropdown {
     visibility: visible;

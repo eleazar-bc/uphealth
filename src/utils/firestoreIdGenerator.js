@@ -1,13 +1,10 @@
-
 export const firestoreIdGenerator = () => {
     const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    let autoId = ''
+    let autoId = '';
 
     for (let i = 0; i < 20; i++) {
-      autoId += CHARS.charAt(
-        Math.floor(Math.random() * CHARS.length)
-      )
+        autoId += CHARS.charAt(Math.floor(Math.random() * CHARS.length));
     }
-    return autoId
-  }
+    return autoId;
+};

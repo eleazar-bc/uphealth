@@ -1,55 +1,55 @@
 <template>
-  <router-link v-bind:to="menu.url" tag="li">
-    <img v-bind:src="menu.src" alt="">
-    <span>{{menu.title}}</span>
-  </router-link>
+    <router-link v-bind:to="menu.url" tag="li">
+        <img v-bind:src="menu.src" alt />
+        <span>{{menu.title}}</span>
+    </router-link>
 </template>
 
 <script>
 export default {
-    name: 'NavigationItem',
-    props: ['menu']
-}
+    name: "NavigationItem",
+    props: ["menu"]
+};
 </script>
 
 <style scoped>
 li {
-  height: 53px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-left: 1.5vw;
-  margin-bottom: .1em;
-  border-left: 5px solid #43425D;
+    height: 53px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 1.5vw;
+    margin-bottom: 0.1em;
+    border-left: 5px solid #43425d;
 }
 
 li:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 li img {
-  margin-right: 1em;
+    margin-right: 1em;
 }
 
 li:hover {
-  background-color: #3C3B54;
-  border-left: 5px solid #A3A0FB;
+    background-color: #3c3b54;
+    border-left: 5px solid #a3a0fb;
 }
 
 li.router-link-active {
-  background-color: #3C3B54;
-  border-left: 5px solid #A3A0FB;
+    background-color: #3c3b54;
+    border-left: 5px solid #a3a0fb;
 }
 
 @media (max-width: 768px) {
-  li {
-    justify-content: center;
-  }
-  li span {
-    display: none;
-  }
+    li {
+        justify-content: center;
+    }
+    li span {
+        display: none;
+    }
 }
 </style>
