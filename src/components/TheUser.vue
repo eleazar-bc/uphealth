@@ -1,60 +1,63 @@
 <template>
-<div class="user">
-    <div class="username">Admin <img src="images/small-down.png" alt=""></div>
-    <img src="images/Avatar.png" alt="" class="avatar">
-</div>
+    <div class="user">
+        <div class="username">
+            Admin
+            <img src="images/small-down.png" alt />
+        </div>
+        <img src="images/Avatar.png" alt class="avatar" />
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'TheUser'
-}
+    name: "TheUser"
+};
 </script>
 
 <style scoped>
 .user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 10vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 10vw;
 }
 
 .user .username {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 0.8125rem;
-  line-height: .20em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.8125rem;
+    line-height: 0.2em;
 }
 
 .user .username:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .user .username img {
-  margin-left: .5em;
+    margin-left: 0.5em;
 }
 
 .user .avatar {
-  height: 32px;
-  width: 32px;
+    height: 32px;
+    width: 32px;
 }
 
 .user .avatar:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @media (max-width: 1024px) {
-  .user .username {
-    display: none;
-  }
+    .user .username {
+        display: none;
+    }
 }
 </style>

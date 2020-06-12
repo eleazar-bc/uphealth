@@ -1,5 +1,5 @@
 <template>
-  <div>
+    <div>
         <input
             v-on:input="handleInputChange()"
             v-bind:type="item.type"
@@ -13,52 +13,54 @@
 
 <script>
 export default {
-    name: 'EditableInput',
-    props: ['item', 'flags'],
+    name: "EditableInput",
+    props: ["item", "flags"],
     methods: {
         handleInputChange() {
             this.borderStyle = "green-border";
-            if(this.item.type == 'number') {
+            if (this.item.type == "number") {
                 this.item.value = parseInt(this.item.value);
             }
-            this.$emit('updated', this.item);
+            this.$emit("updated", this.item);
         },
         restoreBorderStyle() {
-            this.borderStyle = "grey-border"
+            this.borderStyle = "grey-border";
         },
         setDefaultValue() {
-            this.defaultValue= this.item.value;
+            this.defaultValue = this.item.value;
         },
         focusNextInput(event) {
-            const nextInputElement = event.target.parentElement.nextSibling.children[0];
+            const nextInputElement =
+                event.target.parentElement.nextSibling.children[0];
             nextInputElement.focus();
         }
     },
     watch: {
-        'flags.save': function() {
+        "flags.save": function() {
             this.restoreBorderStyle();
             this.setDefaultValue();
         },
-        'flags.cancel': function() {
-            this.item.value = this.defaultValue
-            this.restoreBorderStyle()
+        "flags.cancel": function() {
+            this.item.value = this.defaultValue;
+            this.restoreBorderStyle();
         }
     },
     data() {
         return {
-            defaultValue: '',
+            defaultValue: "",
             borderStyle: "grey-border"
-        }
+        };
     },
     mounted() {
         this.setDefaultValue();
     }
-}
+};
 </script>
 
 <style scoped>
 input.name-input {
     text-align: center;
+    width: 80%;
 }
 .input-label {
     opacity: 0.5;

@@ -110,7 +110,7 @@ const medicines = [
 ];
 
 export default {
-    getAllMedicines: (cb) => {
+    getAllMedicines: cb => {
         return cb(medicines);
     }
-}
+};
