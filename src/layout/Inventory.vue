@@ -4,16 +4,20 @@
         <div class="inventory-container">
             <div class="title">Inventory</div>
             <transition-group name="inventory" class="inventory" tag="div">
-                <InventoryItem v-for="product in filteredList" v-bind:key="product.id" v-bind:product="product"/>
+                <InventoryItem
+                    v-for="product in filteredList"
+                    v-bind:key="product.id"
+                    v-bind:product="product"
+                />
             </transition-group>
         </div>
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
-import AddItem from '../pages/inventory/AddItem';
-import InventoryItem from '../pages/inventory/InventoryItem';
+import { mapState } from "vuex";
+import AddItem from "../views/inventory/AddItem";
+import InventoryItem from "../views/inventory/InventoryItem";
 
 export default {
     name: "Inventory",
@@ -22,18 +26,20 @@ export default {
         InventoryItem
     },
     computed: {
-      ...mapState({
-        allMedicines: state => state.products.medicines,
-        searchFilter: state => state.filter.search
-      }),
-      filteredList(){
-        return this.allMedicines.filter(medicine => {
-          return medicine.name.toLowerCase().includes(this.searchFilter.toLowerCase());
-        })
-      }
+        ...mapState({
+            allMedicines: state => state.products.medicines,
+            searchFilter: state => state.filter.search
+        }),
+        filteredList() {
+            return this.allMedicines.filter(medicine => {
+                return medicine.name
+                    .toLowerCase()
+                    .includes(this.searchFilter.toLowerCase());
+            });
+        }
     },
     created() {
-        this.$store.dispatch('clearFilter');
+        this.$store.dispatch("clearFilter");
     }
 };
 </script>
@@ -57,20 +63,20 @@ export default {
     flex-wrap: wrap;
 }
 
-.inventory-enter, .inventory-leave-to{
-  opacity: 0;
-  transform: translateY(30px);
+.inventory-enter,
+.inventory-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .inventory-leave-active {
-  position: absolute;
+    position: absolute;
 }
 
 .inventory-move {
-  transition: transform 500ms;
+    transition: transform 500ms;
 }
 
 @media (max-width: 768px) {
-
 }
 </style>

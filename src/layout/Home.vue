@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import HomeContent from "../pages/home/HomeContent.vue";
-import SideContent from "../pages/home/SideContent.vue";
+import HomeContent from "../views/home/HomeContent.vue";
+import SideContent from "../views/home/SideContent.vue";
 
 export default {
     name: "Home",
