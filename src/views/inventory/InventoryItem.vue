@@ -2,12 +2,16 @@
     <div class="inventory-item-container container" v-bind:class="{'animated rollOut': animateMe}">
         <div class="upper-buttons-container">
             <div class="update-buttons">
-                <img src="images/check_icon.png" alt=""
+                <img
+                    src="images/check_icon.png"
+                    alt
                     @click="onSave"
                     v-if="showSaveButton"
                     class="save-button"
                 />
-                <img src="images/close.png" alt=""
+                <img
+                    src="images/close.png"
+                    alt
                     @click="onCancel"
                     v-if="showSaveButton"
                     class="cancel-button"
@@ -30,15 +34,15 @@
 <script>
 import { mapActions } from "vuex";
 import EditableInput from "./EditableInput";
-import {getInputOptions} from '../../utils/productUtils'
+import { getInputOptions } from "../../utils/productUtils";
 
 export default {
     name: "InventoryItem",
     components: { EditableInput },
     props: ["product"],
     methods: {
-        ...mapActions(["deleteItem", "updateItem", 'deleteTransaction']),
-        handleUpdate({label, value}) {
+        ...mapActions(["deleteItem", "updateItem", "deleteTransaction"]),
+        handleUpdate({ label, value }) {
             this.showSaveButton = true;
             this.showSaveMessage = false;
             this.product[label] = value;
