@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import InventoryChart from "../pages/dashboard/InventoryChart";
+import InventoryChart from "../views/dashboard/InventoryChart";
 
 export default {
     name: "Dashboard",

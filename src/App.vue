@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import TheSidebar from "./layout/TheSidebar.vue";
-import TheHeader from "./layout/TheHeader.vue";
+import TheSidebar from "./components/TheSidebar.vue";
+import TheHeader from "./components/TheHeader.vue";
 
 import "animate.css";
 
@@ -22,7 +22,7 @@ export default {
         TheHeader
     },
     created() {
-        this.$store.dispatch('setMedicines', 'name');
+        this.$store.dispatch("setMedicines", "name");
     }
 };
 </script>
@@ -97,7 +97,7 @@ html body .background-orange {
 }
 
 .main-container {
-    width: 80vw;
+    width: 85vw;
 }
 
 .main-container .component-container {
